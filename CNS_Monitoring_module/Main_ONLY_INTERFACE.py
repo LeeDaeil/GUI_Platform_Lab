@@ -27,21 +27,8 @@ class Mainwindow(QMainWindow):
         self.ui.Mal_setting.clicked.connect(lambda: UIFunction_CLICK.setMalCondition(self, True))
 
         # TET
-        self.y_test = 0
-        self.x_test = 0
         self.show()
 
-
-    def resizeEvent(self, e):
-        self.CHART_0.appendXYValue(line_nub=0, x=self.x_test, y=self.y_test)
-        self.CHART_0.appendXYValue(line_nub=1, x=self.x_test, y=self.y_test*5)
-
-        self.CHART_1.appendXYValue(line_nub=0, x=self.x_test, y=self.y_test * 2)
-        self.CHART_1.appendXYValue(line_nub=1, x=self.x_test, y=self.y_test * 4)
-
-        self.x_test += 1
-        self.y_test += 2*self.x_test
-        pass
 
 
 if __name__ == '__main__':

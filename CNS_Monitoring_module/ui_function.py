@@ -1,10 +1,10 @@
 from PySide2.QtCharts import *
 from PySide2.QtWidgets import *
-from CNS_Monitoring_module.Main import *
+from CNS_Monitoring_module.Main_ONLY_INTERFACE import *
 
 
 class UIFunction_CLICK(Mainwindow):
-    def initial_cond(self):
+    def initial_cond(self, mem):
         self.ui.Line_ini_0.setMaximumHeight(0)
         self.ui.Content_menu_empty_2.setMaximumHeight(55)
         self.ui.Label_mal_0_case.setMaximumHeight(0)  # 20->0
@@ -15,7 +15,7 @@ class UIFunction_CLICK(Mainwindow):
         self.ui.Line_mal_2_time.setMaximumHeight(0)  # 20->0
         self.ui.Mal_setting.setText('Malfunction\nSetting')
         #------------------------------------------------------------------
-        self.infoInitialNub = 0
+        self.infoInitialNub = 1
         self.infoMalCase = 0
         self.infoMalNub = 0
         self.infoMalTime = 0
@@ -67,7 +67,7 @@ class UIFunction_CLICK(Mainwindow):
             self.animation.setEndValue(widthExtended)
             self.animation.start()
 
-    def setInitialCondition(self, enable):
+    def setInitialCondition(self, CNS_UDP, enable):
         def callWorngMSG():
             worng_int_mgb = QMessageBox()
             worng_int_mgb.setIcon(QMessageBox.Critical)  # 메세지창 내부에 표시될 아이콘
@@ -86,7 +86,7 @@ class UIFunction_CLICK(Mainwindow):
                 self.infoInitialNub = int(self.ui.Line_ini_0.text())
                 updateTopBar()
                 # >> Send Initial Condition !! =========================================================================
-
+                self.CNS_udp._send_control_signal(['KFZRUN', 'KSWO277'], [5, self.infoInitialNub])
                 # >> ===================================================================================================
                 # Clean Txt box
                 self.ui.Line_ini_0.setText('')
@@ -96,7 +96,7 @@ class UIFunction_CLICK(Mainwindow):
                 # Clean Txt box
                 self.ui.Line_ini_0.setText('')
 
-    def setMalCondition(self, enable):
+    def setMalCondition(self, CNS_UDP, enable):
         def callWorngMSG():
             worng_int_mgb = QMessageBox()
             worng_int_mgb.setIcon(QMessageBox.Critical)  # 메세지창 내부에 표시될 아이콘
@@ -118,7 +118,8 @@ class UIFunction_CLICK(Mainwindow):
                 self.infoMalTime = int(self.ui.Line_mal_2_time.text())
                 updateTopBar()
                 # >> Send Mal Condition !! =========================================================================
-
+                CNS_UDP._send_control_signal(['KFZRUN', 'KSWO280', 'KSWO279', 'KSWO278'],
+                                             [10, self.infoMalNub, self.infoMalCase, self.infoMalTime])
                 # >> ===================================================================================================
                 # Clean Txt box
                 self.ui.Line_mal_0_case.setText('')
@@ -163,7 +164,7 @@ class UIFunction_CHART:
     def makeChartView(self):
         self.chartCanv = QtCharts.QChart()
         # self.chartCanv.setAnimationOptions(QtCharts.QChart.SeriesAnimations)
-        self.chartCanv.setAnimationOptions(QtCharts.QChart.AllAnimations)
+        # self.chartCanv.setAnimationOptions(QtCharts.QChart.AllAnimations)
         self.chartCanv.setTitle(self.title)
 
         self.chartView = QtCharts.QChartView(self.chartCanv)
@@ -176,12 +177,26 @@ class UIFunction_CHART:
         return self.chartView
 
     def appendXYValue(self, line_nub, x, y):
-        self.line_series[line_nub].append(x, y)
-        if x >= self.min_max_val['max_x']*0.9:
-            self.min_max_val['max_x'] = x*1.1
-        if y >= self.min_max_val['max_y']*0.9:
-            self.min_max_val['max_y'] = y*1.1
-        self.update_CHART(line_nub)
+        if x == 0:
+            self.min_max_val = {'max_x': 0, 'max_y': 0, 'min_x': 0, 'min_y': 0}
+            self.line_series[line_nub].clear()
+
+        if len(self.line_series[line_nub].points()) > 0:
+            get_point = self.line_series[line_nub].points()[-1]
+            if int(get_point.x()) != x:
+                self.line_series[line_nub].append(x, y)
+                if x >= self.min_max_val['max_x'] * 0.9:
+                    self.min_max_val['max_x'] = x * 1.1
+                if y >= self.min_max_val['max_y'] * 0.9:
+                    self.min_max_val['max_y'] = y * 1.1
+                self.update_CHART(line_nub)
+        else:
+            self.line_series[line_nub].append(x, y)
+            if x >= self.min_max_val['max_x'] * 0.9:
+                self.min_max_val['max_x'] = x * 1.1
+            if y >= self.min_max_val['max_y'] * 0.9:
+                self.min_max_val['max_y'] = y * 1.1
+            self.update_CHART(line_nub)
 
     def update_CHART(self, line_nub):
         self.chartCanv.removeSeries(self.line_series[line_nub])
@@ -201,4 +216,3 @@ class UIFunction_CHART:
 
         self.line_series[line_nub].attachAxis(self.line_axis_x)
         self.line_series[line_nub].attachAxis(self.line_axis_y)
-
