@@ -14,7 +14,7 @@ diagnosis_module = Diagnosis_module()
 model_module = Model_module()
 model_module.load_model()
 
-
+print('a')
 threshold_train_untrain = 0.00225299
 threshold_normal_abnormal = 0.00022733
 
