@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
-    <height>745</height>
+    <width>1014</width>
+    <height>782</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -157,8 +157,15 @@ QPushButton:checked {
           <item>
            <widget class="QLabel" name="Top_width_output">
             <property name="styleSheet">
-             <string notr="true">color: rgb(255, 255, 255);
-font: 75 14pt &quot;맑은 고딕&quot;;</string>
+             <string notr="true">QLabel {
+    border: 2px solid rgb(52,49,89);
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(52,49,89);
+	font: 75 14pt &quot;맑은 고딕&quot;;
+	color: rgb(255, 255, 255);
+    selection-background-color: darkgray;
+}</string>
             </property>
             <property name="text">
              <string>Current Condition:</string>
@@ -177,8 +184,15 @@ font: 75 14pt &quot;맑은 고딕&quot;;</string>
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">color: rgb(255, 255, 255);
-font: 75 14pt &quot;맑은 고딕&quot;;</string>
+             <string notr="true">QLabel {
+    border: 2px solid rgb(52,49,89);
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(52,49,89);
+	font: 75 14pt &quot;맑은 고딕&quot;;
+	color: rgb(255, 255, 255);
+    selection-background-color: darkgray;
+}</string>
             </property>
             <property name="text">
              <string/>
@@ -290,19 +304,22 @@ font: 75 14pt &quot;맑은 고딕&quot;;</string>
                 <string notr="true">QPushButton {
 	color: rgb(255, 255, 255);
 	font: 75 9pt &quot;맑은 고딕&quot;;
-	border: 2px solid  #dddddd;
+    border-radius: 10px;
+	background-color: rgb(52,49,89);
 }
 QPushButton:hover {
-	color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
 	font: 75 9pt &quot;맑은 고딕&quot;;
-	border: 2px solid  #dddddd;
-	background-color: rgb(229, 229, 229);
+	border: 1px solid  #dddddd;
+    border-radius: 10px;
+	background-color: rgb(52,49,89);
 }
 QPushButton:pressed{
 	color: rgb(204, 18, 89);
 	font: 75 9pt &quot;맑은 고딕&quot;;
 	border: 2px solid  #dddddd;
-	background-color: rgb(229, 229, 229);
+    border-radius: 10px;
+	background-color: rgb(52,49,89);
 }
 </string>
                </property>
@@ -314,7 +331,14 @@ QPushButton:pressed{
              <item>
               <widget class="QLineEdit" name="Line_ini_0">
                <property name="styleSheet">
-                <string notr="true">color: rgb(255, 255, 255);</string>
+                <string notr="true">QLineEdit {
+    border: 2px solid rgb(52,49,89);
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(52,49,89);
+	color: rgb(255, 255, 255);
+    selection-background-color: darkgray;
+}</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
@@ -346,19 +370,22 @@ QPushButton:pressed{
                 <string notr="true">QPushButton {
 	color: rgb(255, 255, 255);
 	font: 75 9pt &quot;맑은 고딕&quot;;
-	border: 2px solid  #dddddd;
+    border-radius: 10px;
+	background-color: rgb(52,49,89);
 }
 QPushButton:hover {
-	color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
 	font: 75 9pt &quot;맑은 고딕&quot;;
-	border: 2px solid  #dddddd;
-	background-color: rgb(229, 229, 229);
+	border: 1px solid  #dddddd;
+    border-radius: 10px;
+	background-color: rgb(52,49,89);
 }
 QPushButton:pressed{
 	color: rgb(204, 18, 89);
 	font: 75 9pt &quot;맑은 고딕&quot;;
 	border: 2px solid  #dddddd;
-	background-color: rgb(229, 229, 229);
+    border-radius: 10px;
+	background-color: rgb(52,49,89);
 }
 </string>
                </property>
@@ -390,7 +417,14 @@ font: 75 9pt &quot;맑은 고딕&quot;;</string>
              <item>
               <widget class="QLineEdit" name="Line_mal_0_case">
                <property name="styleSheet">
-                <string notr="true">color: rgb(255, 255, 255);</string>
+                <string notr="true">QLineEdit {
+    border: 2px solid rgb(52,49,89);
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(52,49,89);
+	color: rgb(255, 255, 255);
+    selection-background-color: darkgray;
+}</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
@@ -420,7 +454,14 @@ font: 75 9pt &quot;맑은 고딕&quot;;</string>
              <item>
               <widget class="QLineEdit" name="Line_mal_1_nub">
                <property name="styleSheet">
-                <string notr="true">color: rgb(255, 255, 255);</string>
+                <string notr="true">QLineEdit {
+    border: 2px solid rgb(52,49,89);
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(52,49,89);
+	color: rgb(255, 255, 255);
+    selection-background-color: darkgray;
+}</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
@@ -456,7 +497,14 @@ font: 75 9pt &quot;맑은 고딕&quot;;</string>
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">color: rgb(255, 255, 255);</string>
+                <string notr="true">QLineEdit {
+    border: 2px solid rgb(52,49,89);
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(52,49,89);
+	color: rgb(255, 255, 255);
+    selection-background-color: darkgray;
+}</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
@@ -496,7 +544,7 @@ font: 75 9pt &quot;맑은 고딕&quot;;</string>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_5">
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
           <property name="spacing">
            <number>0</number>
           </property>
@@ -513,48 +561,6 @@ font: 75 9pt &quot;맑은 고딕&quot;;</string>
            <number>0</number>
           </property>
           <item>
-           <widget class="QFrame" name="Coten_right_0_top">
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_4">
-             <property name="spacing">
-              <number>0</number>
-             </property>
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <item>
-              <layout class="QVBoxLayout" name="GP_0_1"/>
-             </item>
-             <item>
-              <layout class="QVBoxLayout" name="GP_0_2"/>
-             </item>
-             <item>
-              <layout class="QVBoxLayout" name="GP_0_3"/>
-             </item>
-             <item>
-              <layout class="QVBoxLayout" name="GP_0_4"/>
-             </item>
-             <item>
-              <layout class="QVBoxLayout" name="GP_0_5"/>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
            <widget class="QFrame" name="Coten_right_1_bot">
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
@@ -562,7 +568,7 @@ font: 75 9pt &quot;맑은 고딕&quot;;</string>
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
             </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <layout class="QVBoxLayout" name="verticalLayout_7">
              <property name="spacing">
               <number>0</number>
              </property>
@@ -579,19 +585,61 @@ font: 75 9pt &quot;맑은 고딕&quot;;</string>
               <number>0</number>
              </property>
              <item>
-              <layout class="QVBoxLayout" name="GP_1_1"/>
-             </item>
-             <item>
-              <layout class="QVBoxLayout" name="GP_1_2"/>
-             </item>
-             <item>
-              <layout class="QVBoxLayout" name="GP_1_3"/>
+              <layout class="QVBoxLayout" name="GP_1_5"/>
              </item>
              <item>
               <layout class="QVBoxLayout" name="GP_1_4"/>
              </item>
              <item>
-              <layout class="QVBoxLayout" name="GP_1_5"/>
+              <layout class="QVBoxLayout" name="GP_1_3"/>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="GP_1_2"/>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="GP_1_1"/>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="Coten_right_0_top">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_6">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <layout class="QVBoxLayout" name="GP_0_5"/>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="GP_0_4"/>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="GP_0_3"/>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="GP_0_2"/>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="GP_0_1"/>
              </item>
             </layout>
            </widget>

@@ -5,7 +5,7 @@ from keras.models import load_model
 from collections import deque
 import matplotlib.pyplot as plt
 import matplotlib
-from Rule_module import Rule_module
+from CNS_Monitoring_module.PARKJIHUN.Rule_module_ver2 import Rule_module
 
 class Plot_module:
     def __init__(self):

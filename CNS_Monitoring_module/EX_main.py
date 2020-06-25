@@ -49,6 +49,12 @@ class generate_mem:
         print('Clean 메모리 생성 완료')
         return memory_dict
 
+    def make_net_out(self):
+        memory_dict = {f'Net_{_}': [] for _ in range(10)}
+        memory_dict['Net_Count'] = 0
+        print('Net_out 메모리 생성 완료')
+        return memory_dict
+
     def make_main_mem_structure(self, max_len_deque=10):
         memory_dict = db_make().make_db_structure(max_len_deque)
         print('Main 메모리 생성 완료')
@@ -58,6 +64,7 @@ class generate_mem:
         print('=' * 25 + '메모리 생성 시작' + '=' * 25)
         memory_list = [Manager().dict(self.make_main_mem_structure(max_len_deque=10)),    # [0]
                        Manager().list(),                                                  # [1]
+                       Manager().dict(self.make_net_out()),                               # [2]
                        Manager().dict(self.make_clean_mem()),                             # [-1]
                        ]
         print('=' * 25 + '메모리 생성 완료' + '=' * 25)

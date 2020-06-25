@@ -34,9 +34,10 @@ class Mainwindow(QMainWindow):
         if mem == None: # TEST Stay
             pass
         else:
-            self.mem = mem[0]  # main mem connection
-            self.Act_list = mem[1]
-            self.trig_mem = mem[-1]  # main mem connection
+            self.mem = mem[0]       # main mem connection
+            self.Act_list = mem[1]  # main mem connection
+            self.NET_OUT = mem[2]   # main mem connection
+            self.trig_mem = mem[-1] # main mem connection
             # ---- 초기함수 호출
             self.call_cns_udp_sender()
             # ---- 버튼 명령
@@ -44,9 +45,16 @@ class Mainwindow(QMainWindow):
 
             # ==========================================================================================================
             UIFunction_CLICK.initial_cond(self, self.mem)
-            self.CHART_0 = UIFunction_CHART(parent=self.ui.GP_0_1, title='A1', label=['A', 'B'])
-            self.CHART_1 = UIFunction_CHART(parent=self.ui.GP_0_2, title='A2', label=['A', 'B'])
-            self.CHART_2 = UIFunction_CHART(parent=self.ui.GP_0_3, title='NET_TEST', label=['A', 'B'])
+            self.CHART_0 = UIFunction_CHART(parent=self.ui.GP_0_1, title='A1', label=['Normal',
+                                                                                      'LOCA', 'SGTR', 'MSLB', 'MFLB'])
+            # self.CHART_1 = UIFunction_CHART(parent=self.ui.GP_0_2, title='A2', label=['Normal',
+            #                                                                           'LOCA', 'SGTR', 'MSLB', 'MFLB'])
+            # self.CHART_2 = UIFunction_CHART(parent=self.ui.GP_0_3, title='A3', label=['Normal',
+            #                                                                           'LOCA', 'SGTR', 'MSLB', 'MFLB'])
+            # self.CHART_3 = UIFunction_CHART(parent=self.ui.GP_0_4, title='A4', label=['Normal',
+            #                                                                           'LOCA', 'SGTR', 'MSLB', 'MFLB'])
+            # self.CHART_4 = UIFunction_CHART(parent=self.ui.GP_0_5, title='A5', label=['Normal',
+            #                                                                           'LOCA', 'SGTR', 'MSLB', 'MFLB'])
             #
             # # >> FUNCTION
             self.ui.Content_menu_empty_0.clicked.connect(lambda: UIFunction_CLICK.toggleMenu(self, 300, True))
@@ -76,11 +84,11 @@ class Mainwindow(QMainWindow):
         power = self.mem['QPROREL']['V']*100
         self.ui.Top_width_emp.setText(f'Reactor Power : {power:.2f}[%]')
         # Draw Chart
-        self.CHART_0.appendXYValue(line_nub=0, x=self.mem['KCNTOMS']['V']/5, y=self.mem['ZINST15']['V'])
-        self.CHART_0.appendXYValue(line_nub=1, x=self.mem['KCNTOMS']['V']/5, y=self.mem['ZINST18']['V'])
-        self.CHART_1.appendXYValue(line_nub=0, x=self.mem['KCNTOMS']['V']/5, y=self.mem['ZINST15']['V'])
-        self.CHART_1.appendXYValue(line_nub=1, x=self.mem['KCNTOMS']['V']/5, y=self.mem['ZINST18']['V'])
-        self.CHART_2.appendXYValue(line_nub=0, x=self.mem['KCNTOMS']['V']/5, y=self.mem['ZINST18']['V'])
+        if self.NET_OUT['Net_Count'] != 0:
+            for _ in range(5):
+                self.CHART_0.appendXYValue(line_nub=_, x=self.NET_OUT['Net_Count'], y=self.NET_OUT['Net_0'][_])
+                # self.CHART_1.appendXYValue(line_nub=_, x=self.NET_OUT['Net_Count'], y=self.NET_OUT['Net_1'][_])
+                # self.CHART_2.appendXYValue(line_nub=_, x=self.NET_OUT['Net_Count'], y=self.NET_OUT['Net_2'][_])
         pass
 
 if __name__ == '__main__':

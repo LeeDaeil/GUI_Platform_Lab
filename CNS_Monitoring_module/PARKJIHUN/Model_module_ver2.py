@@ -15,7 +15,6 @@ class Model_module:
         self.abnormal_verif_reconstruction_error = []
         self.selected_para = pd.read_csv('./DataBase/Final_parameter.csv')
 
-
     def flatten(self, X):
         '''
         Flatten a 3D array.

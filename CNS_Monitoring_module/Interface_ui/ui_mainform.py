@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainformgnEvNI.ui'
+## Form generated from reading UI file 'mainformVnSdjm.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.0
 ##
@@ -20,7 +20,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1000, 745)
+        MainWindow.resize(1000, 782)
         MainWindow.setMinimumSize(QSize(1000, 500))
         MainWindow.setStyleSheet(u"background-color: rgb(255, 255, 255);")
         self.centralwidget = QWidget(MainWindow)
@@ -264,81 +264,81 @@ class Ui_MainWindow(object):
         self.Content_right.setStyleSheet(u"background-color: rgb(255, 255, 255);")
         self.Content_right.setFrameShape(QFrame.StyledPanel)
         self.Content_right.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_5 = QVBoxLayout(self.Content_right)
-        self.verticalLayout_5.setSpacing(0)
-        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
-        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
-        self.Coten_right_0_top = QFrame(self.Content_right)
-        self.Coten_right_0_top.setObjectName(u"Coten_right_0_top")
-        self.Coten_right_0_top.setFrameShape(QFrame.StyledPanel)
-        self.Coten_right_0_top.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_4 = QHBoxLayout(self.Coten_right_0_top)
+        self.horizontalLayout_4 = QHBoxLayout(self.Content_right)
         self.horizontalLayout_4.setSpacing(0)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
-        self.GP_0_1 = QVBoxLayout()
-        self.GP_0_1.setObjectName(u"GP_0_1")
-
-        self.horizontalLayout_4.addLayout(self.GP_0_1)
-
-        self.GP_0_2 = QVBoxLayout()
-        self.GP_0_2.setObjectName(u"GP_0_2")
-
-        self.horizontalLayout_4.addLayout(self.GP_0_2)
-
-        self.GP_0_3 = QVBoxLayout()
-        self.GP_0_3.setObjectName(u"GP_0_3")
-
-        self.horizontalLayout_4.addLayout(self.GP_0_3)
-
-        self.GP_0_4 = QVBoxLayout()
-        self.GP_0_4.setObjectName(u"GP_0_4")
-
-        self.horizontalLayout_4.addLayout(self.GP_0_4)
-
-        self.GP_0_5 = QVBoxLayout()
-        self.GP_0_5.setObjectName(u"GP_0_5")
-
-        self.horizontalLayout_4.addLayout(self.GP_0_5)
-
-
-        self.verticalLayout_5.addWidget(self.Coten_right_0_top)
-
         self.Coten_right_1_bot = QFrame(self.Content_right)
         self.Coten_right_1_bot.setObjectName(u"Coten_right_1_bot")
         self.Coten_right_1_bot.setFrameShape(QFrame.StyledPanel)
         self.Coten_right_1_bot.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_5 = QHBoxLayout(self.Coten_right_1_bot)
-        self.horizontalLayout_5.setSpacing(0)
-        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
-        self.GP_1_1 = QVBoxLayout()
-        self.GP_1_1.setObjectName(u"GP_1_1")
+        self.verticalLayout_7 = QVBoxLayout(self.Coten_right_1_bot)
+        self.verticalLayout_7.setSpacing(0)
+        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.GP_1_5 = QVBoxLayout()
+        self.GP_1_5.setObjectName(u"GP_1_5")
 
-        self.horizontalLayout_5.addLayout(self.GP_1_1)
-
-        self.GP_1_2 = QVBoxLayout()
-        self.GP_1_2.setObjectName(u"GP_1_2")
-
-        self.horizontalLayout_5.addLayout(self.GP_1_2)
-
-        self.GP_1_3 = QVBoxLayout()
-        self.GP_1_3.setObjectName(u"GP_1_3")
-
-        self.horizontalLayout_5.addLayout(self.GP_1_3)
+        self.verticalLayout_7.addLayout(self.GP_1_5)
 
         self.GP_1_4 = QVBoxLayout()
         self.GP_1_4.setObjectName(u"GP_1_4")
 
-        self.horizontalLayout_5.addLayout(self.GP_1_4)
+        self.verticalLayout_7.addLayout(self.GP_1_4)
 
-        self.GP_1_5 = QVBoxLayout()
-        self.GP_1_5.setObjectName(u"GP_1_5")
+        self.GP_1_3 = QVBoxLayout()
+        self.GP_1_3.setObjectName(u"GP_1_3")
 
-        self.horizontalLayout_5.addLayout(self.GP_1_5)
+        self.verticalLayout_7.addLayout(self.GP_1_3)
+
+        self.GP_1_2 = QVBoxLayout()
+        self.GP_1_2.setObjectName(u"GP_1_2")
+
+        self.verticalLayout_7.addLayout(self.GP_1_2)
+
+        self.GP_1_1 = QVBoxLayout()
+        self.GP_1_1.setObjectName(u"GP_1_1")
+
+        self.verticalLayout_7.addLayout(self.GP_1_1)
 
 
-        self.verticalLayout_5.addWidget(self.Coten_right_1_bot)
+        self.horizontalLayout_4.addWidget(self.Coten_right_1_bot)
+
+        self.Coten_right_0_top = QFrame(self.Content_right)
+        self.Coten_right_0_top.setObjectName(u"Coten_right_0_top")
+        self.Coten_right_0_top.setFrameShape(QFrame.StyledPanel)
+        self.Coten_right_0_top.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_6 = QVBoxLayout(self.Coten_right_0_top)
+        self.verticalLayout_6.setSpacing(0)
+        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.GP_0_5 = QVBoxLayout()
+        self.GP_0_5.setObjectName(u"GP_0_5")
+
+        self.verticalLayout_6.addLayout(self.GP_0_5)
+
+        self.GP_0_4 = QVBoxLayout()
+        self.GP_0_4.setObjectName(u"GP_0_4")
+
+        self.verticalLayout_6.addLayout(self.GP_0_4)
+
+        self.GP_0_3 = QVBoxLayout()
+        self.GP_0_3.setObjectName(u"GP_0_3")
+
+        self.verticalLayout_6.addLayout(self.GP_0_3)
+
+        self.GP_0_2 = QVBoxLayout()
+        self.GP_0_2.setObjectName(u"GP_0_2")
+
+        self.verticalLayout_6.addLayout(self.GP_0_2)
+
+        self.GP_0_1 = QVBoxLayout()
+        self.GP_0_1.setObjectName(u"GP_0_1")
+
+        self.verticalLayout_6.addLayout(self.GP_0_1)
+
+
+        self.horizontalLayout_4.addWidget(self.Coten_right_0_top)
 
 
         self.horizontalLayout_2.addWidget(self.Content_right)

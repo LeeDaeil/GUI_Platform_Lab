@@ -119,7 +119,7 @@ class UIFunction_CLICK(Mainwindow):
                 updateTopBar()
                 # >> Send Mal Condition !! =========================================================================
                 CNS_UDP._send_control_signal(['KFZRUN', 'KSWO280', 'KSWO279', 'KSWO278'],
-                                             [10, self.infoMalNub, self.infoMalCase, self.infoMalTime])
+                                             [10, self.infoMalCase, self.infoMalNub, self.infoMalTime])
                 # >> ===================================================================================================
                 # Clean Txt box
                 self.ui.Line_mal_0_case.setText('')
@@ -205,7 +205,10 @@ class UIFunction_CHART:
 
         self.line_axis_x = QtCharts.QValueAxis()
         self.line_axis_x.setTickCount(5)
-        self.line_axis_x.setRange(0, self.min_max_val['max_x'])
+        if self.min_max_val['max_x'] > 100:
+            self.line_axis_x.setRange(self.min_max_val['max_x']-100, self.min_max_val['max_x'])
+        else:
+            self.line_axis_x.setRange(0, self.min_max_val['max_x'])
         self.line_axis_y = QtCharts.QValueAxis()
         self.line_axis_y.setTickCount(5)
         self.line_axis_y.setRange(0, self.min_max_val['max_y'])

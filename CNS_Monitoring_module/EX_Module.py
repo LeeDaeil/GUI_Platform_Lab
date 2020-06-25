@@ -1,6 +1,11 @@
 import multiprocessing
 from time import sleep
+
+import pandas as pd
+import copy
+import numpy as np
 from CNS_Monitoring_module.EX_CNS_Send_UDP import CNS_Send_Signal
+from CNS_Monitoring_module.EX_NetworkTool import NetTool
 
 TEST_FOR_LOAD = False
 
@@ -8,9 +13,11 @@ class EX_module(multiprocessing.Process):
     def __init__(self, mem):
         multiprocessing.Process.__init__(self)
 
-        self.mem = mem[0]  # main mem connection
-        self.Act_list = mem[1]  # main mem connection
-        self.trig_mem = mem[-1]  # main mem connection
+        self.mem = mem[0]           # main mem connection
+        self.Act_list = mem[1]      # main mem connection
+        self.NET_OUT = mem[2]       # main mem connection
+        self.NET_OUT_COPY = copy.deepcopy(self.NET_OUT)
+        self.trig_mem = mem[-1]     # main mem connection
 
         with open('EX_pro.txt', 'r') as f:
             self.cns_ip, self.cns_port = f.read().split('\t')  # [cns ip],[cns port]
@@ -80,9 +87,36 @@ class EX_module(multiprocessing.Process):
 
     def run(self):
         get_nub_act_list = len(self.Act_list)
+        input_windows = []
+
+        # Call NetToolBox
+        NetToolBox = NetTool()
+
         while True:
             if self.trig_mem['Loop'] and self.trig_mem['Run']:
                 print('계산중....', end='\t')
+                ##
+                # input_windows.append(NetToolBox.make_input_window(self.mem)[0])
+                # if len(input_windows) > 10:
+                #     input_windows = input_windows[1:]
+                #     out = NetToolBox.NetBox.predict(np.array([input_windows]))
+                    # self.NET_OUT['Net_1'].append(out)
+                    # print(out)
+                #
+
+                ##
+                get_input = np.array(NetToolBox.make_input_window_ST(self.mem))
+                # NetBox return (1, 5) shape -> [0] -> (5)
+                self.NET_OUT_COPY['Net_0'] = NetToolBox.NetBox.predict(np.reshape(get_input, (1, 17)))[0]
+                # self.NET_OUT_COPY['Net_1'] = NetToolBox.NetBox.predict(np.reshape(get_input, (1, 16)))[0]
+                # self.NET_OUT_COPY['Net_2'] = NetToolBox.NetBox.predict(np.reshape(get_input, (1, 16)))[0]
+                self.NET_OUT_COPY['Net_Count'] += 1
+
+                # Update NET_OUT memory
+                for NET_OUT_key in self.NET_OUT_COPY.keys():
+                    self.NET_OUT[NET_OUT_key] = self.NET_OUT_COPY[NET_OUT_key]
+
+
                 ##
                 print('계산 종료! ....', end='\t')
                 print(self, self.mem['KCNTOMS'], self.Act_list, self.trig_mem['Loop'], self.trig_mem['Run'])
