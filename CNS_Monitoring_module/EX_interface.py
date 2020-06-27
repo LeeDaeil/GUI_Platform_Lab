@@ -47,8 +47,8 @@ class Mainwindow(QMainWindow):
             UIFunction_CLICK.initial_cond(self, self.mem)
             self.CHART_0 = UIFunction_CHART(parent=self.ui.GP_0_1, title='A1', label=['Normal',
                                                                                       'LOCA', 'SGTR', 'MSLB', 'MFLB'])
-            # self.CHART_1 = UIFunction_CHART(parent=self.ui.GP_0_2, title='A2', label=['Normal',
-            #                                                                           'LOCA', 'SGTR', 'MSLB', 'MFLB'])
+            self.CHART_1 = UIFunction_CHART(parent=self.ui.GP_0_2, title='A2', label=['Normal',
+                                                                                      'LOCA', 'SGTR', 'MSLB', 'MFLB'])
             # self.CHART_2 = UIFunction_CHART(parent=self.ui.GP_0_3, title='A3', label=['Normal',
             #                                                                           'LOCA', 'SGTR', 'MSLB', 'MFLB'])
             # self.CHART_3 = UIFunction_CHART(parent=self.ui.GP_0_4, title='A4', label=['Normal',
@@ -87,7 +87,7 @@ class Mainwindow(QMainWindow):
         if self.NET_OUT['Net_Count'] != 0:
             for _ in range(5):
                 self.CHART_0.appendXYValue(line_nub=_, x=self.NET_OUT['Net_Count'], y=self.NET_OUT['Net_0'][_])
-                # self.CHART_1.appendXYValue(line_nub=_, x=self.NET_OUT['Net_Count'], y=self.NET_OUT['Net_1'][_])
+                self.CHART_1.appendXYValue(line_nub=_, x=self.NET_OUT['Net_Count'], y=self.NET_OUT['Net_1'][_])
                 # self.CHART_2.appendXYValue(line_nub=_, x=self.NET_OUT['Net_Count'], y=self.NET_OUT['Net_2'][_])
         pass
 

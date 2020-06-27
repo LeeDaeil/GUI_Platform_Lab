@@ -9,12 +9,19 @@ class NetTool:
         # ==== 스케일러
         self.scaler = self.make_scaler()
         self.ParaList = self.make_paralist()
-        self.NetBox = self.make_net()
+        self.NetBox = [self.make_net(nub=0, path='ST_Model/YH_0_save_model.h5'),
+                       self.make_net(nub=1, path='ST_Model/YH_1_save_model.h5'),]
 
     def make_paralist(self):
         # paralist = pd.read_csv('PARKJIHUN/MIN_MAX/Final_parameter.csv')['0'].tolist()
-        paralist = ['UAVLEG1', 'UAVLEG2', 'UAVLEG3', 'ZINST58', 'ZINST75', 'ZINST30', 'ZINST78', 'ZINST74',
-                    'WFWLN1', 'WFWLN2', 'WFWLN3', 'ZINST26', 'ZINST22', 'BFV122', 'URHXUT', 'ZINST56', 'KBCDO23']
+        paralist = []
+        # Model 1
+        paralist.append(['UAVLEG1', 'UAVLEG2', 'UAVLEG3', 'ZINST58', 'ZINST75', 'ZINST30', 'ZINST78', 'ZINST74',
+                         'WFWLN1', 'WFWLN2', 'WFWLN3', 'ZINST26', 'ZINST22', 'BFV122', 'URHXUT', 'ZINST56', 'KBCDO23'])
+        # Model 2
+        paralist.append(['UAVLEG1', 'UAVLEG2', 'UAVLEG3', 'ZINST58', 'ZINST75','ZINST30', 'ZINST78', 'ZINST74',
+                         'WFWLN1', 'WFWLN2', 'WFWLN3', 'ZINST26', 'ZINST22', 'BFV122','URHXUT','ZINST56','KBCDO23',
+                         'ZINST65', 'ZINST22', 'DSECON', 'WSTM1', 'WSTM2', 'WSTM3'])
         return paralist
 
     def make_scaler(self):
@@ -26,9 +33,11 @@ class NetTool:
         # min_value = pd.read_csv('PARKJIHUN/MIN_MAX/min_value_final.csv')
         # max_value = pd.read_csv('PARKJIHUN/MIN_MAX/max_value_final.csv')
         # scaler.fit([min_value['0'], max_value['0']])
-
-        with open('scaler.pkl', 'rb') as f:
-            scaler = pickle.load(f)
+        scaler = []
+        with open('ST_Model/YH_0_scaler.pkl', 'rb') as f:
+            scaler.append(pickle.load(f))
+        with open('ST_Model/YH_1_scaler.pkl', 'rb') as f:
+            scaler.append(pickle.load(f))
 
         return scaler
 
@@ -44,12 +53,12 @@ class NetTool:
         one_input_window = self.scaler.transform(np.reshape(one_input_window, (1, len(one_input_window))))
         return one_input_window
 
-    def make_input_window_ST(self, db):
-        one_input_window = np.array([db[key]['V'] for key in self.ParaList])
-        one_input_window = self.scaler.transform(np.reshape(one_input_window, (1, len(one_input_window))))
+    def make_input_window_ST(self, nub, db):
+        one_input_window = np.array([db[key]['V'] for key in self.ParaList[nub]])
+        one_input_window = self.scaler[nub].transform(np.reshape(one_input_window, (1, len(one_input_window))))
         return one_input_window
 
-    def make_net(self):
+    def make_net(self, nub, path):
         import tensorflow as tf
         # self.timesteps = 10
         # self.input_dim = 46
@@ -63,16 +72,13 @@ class NetTool:
         # decoded = tf.keras.layers.LSTM(self.input_dim, return_sequences=True, name='decoder')(decoded)
         # autoencoder = tf.keras.models.Model(inputs, decoded)
 
-        inputs = tf.keras.Input(len(self.ParaList))
+        inputs = tf.keras.Input(len(self.ParaList[nub]))
         hiden = tf.keras.layers.Dense(300, activation='relu')(inputs)
         hiden1 = tf.keras.layers.Dense(300)(hiden)
         hiden2 = tf.keras.layers.Dense(300)(hiden1)
         output = tf.keras.layers.Dense(5, activation='softmax')(hiden2)
-        model = tf.keras.models.Model(inputs,output)
+        model = tf.keras.models.Model(inputs, output)
 
-        # model.save_weights('TESTW.h5')
-
-        model.load_weights('save_model.h5')
-
+        model.load_weights(filepath=path)
 
         return model

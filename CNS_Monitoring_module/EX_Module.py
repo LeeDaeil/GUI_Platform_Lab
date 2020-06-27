@@ -105,10 +105,12 @@ class EX_module(multiprocessing.Process):
                 #
 
                 ##
-                get_input = np.array(NetToolBox.make_input_window_ST(self.mem))
+                get_input = np.array(NetToolBox.make_input_window_ST(nub=0, db=self.mem))
                 # NetBox return (1, 5) shape -> [0] -> (5)
-                self.NET_OUT_COPY['Net_0'] = NetToolBox.NetBox.predict(np.reshape(get_input, (1, 17)))[0]
-                # self.NET_OUT_COPY['Net_1'] = NetToolBox.NetBox.predict(np.reshape(get_input, (1, 16)))[0]
+                self.NET_OUT_COPY['Net_0'] = NetToolBox.NetBox[0].predict(get_input)[0]
+                get_input = np.array(NetToolBox.make_input_window_ST(nub=1, db=self.mem))
+                print(get_input)
+                self.NET_OUT_COPY['Net_1'] = NetToolBox.NetBox[1].predict(get_input)[0]
                 # self.NET_OUT_COPY['Net_2'] = NetToolBox.NetBox.predict(np.reshape(get_input, (1, 16)))[0]
                 self.NET_OUT_COPY['Net_Count'] += 1
 
