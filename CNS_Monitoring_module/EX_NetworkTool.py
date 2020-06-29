@@ -10,7 +10,8 @@ class NetTool:
         self.scaler = self.make_scaler()
         self.ParaList = self.make_paralist()
         self.NetBox = [self.make_net(nub=0, path='ST_Model/YH_0_save_model.h5'),
-                       self.make_net(nub=1, path='ST_Model/YH_1_save_model.h5'),]
+                       self.make_net(nub=1, path='ST_Model/YH_1_save_model.h5'),
+                       self.make_net(nub=2, path='ST_Model/YH_2_save_model.h5'),]
 
     def make_paralist(self):
         # paralist = pd.read_csv('PARKJIHUN/MIN_MAX/Final_parameter.csv')['0'].tolist()
@@ -22,6 +23,12 @@ class NetTool:
         paralist.append(['UAVLEG1', 'UAVLEG2', 'UAVLEG3', 'ZINST58', 'ZINST75','ZINST30', 'ZINST78', 'ZINST74',
                          'WFWLN1', 'WFWLN2', 'WFWLN3', 'ZINST26', 'ZINST22', 'BFV122','URHXUT','ZINST56','KBCDO23',
                          'ZINST65', 'ZINST22', 'DSECON', 'WSTM1', 'WSTM2', 'WSTM3'])
+
+        # Model 3
+        paralist.append(['UAVLEG1', 'UAVLEG2', 'UAVLEG3', 'ZINST58', 'ZINST75', 'ZINST73', 'ZINST74','ZINST30', 'ZINST78',
+                         'WFWLN1', 'WFWLN2', 'WFWLN3', 'ZINST26', 'ZINST22', 'BFV122','URHXUT','ZINST56','KBCDO23',
+                         'ZINST65', 'ZINST22', 'DSECON', 'WSTM1', 'WSTM2', 'WSTM3', 'KFAST', 'KSLOW','BPORV',
+                         'UNRHXUT', 'ZINST36'])
         return paralist
 
     def make_scaler(self):
@@ -38,7 +45,8 @@ class NetTool:
             scaler.append(pickle.load(f))
         with open('ST_Model/YH_1_scaler.pkl', 'rb') as f:
             scaler.append(pickle.load(f))
-
+        with open('ST_Model/YH_2_scaler.pkl', 'rb') as f:
+            scaler.append(pickle.load(f))
         return scaler
 
     def make_input_window(self, db):
