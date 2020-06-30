@@ -45,16 +45,24 @@ class Mainwindow(QMainWindow):
 
             # ==========================================================================================================
             UIFunction_CLICK.initial_cond(self, self.mem)
-            self.CHART_0 = UIFunction_CHART(parent=self.ui.GP_0_1, title='A1', label=['Normal',
+            self.CHART_0 = UIFunction_CHART(parent=self.ui.GP_0_1, title='진의', label=['Normal',
                                                                                       'LOCA', 'SGTR', 'MSLB', 'MFLB'])
-            self.CHART_1 = UIFunction_CHART(parent=self.ui.GP_0_2, title='A2', label=['Normal',
+            self.CHART_1 = UIFunction_CHART(parent=self.ui.GP_0_2, title='윤희1', label=['Normal',
                                                                                       'LOCA', 'SGTR', 'MSLB', 'MFLB'])
-            self.CHART_2 = UIFunction_CHART(parent=self.ui.GP_0_3, title='A3', label=['Normal',
+            self.CHART_2 = UIFunction_CHART(parent=self.ui.GP_0_3, title='윤철', label=['Normal',
                                                                                       'LOCA', 'SGTR', 'MSLB', 'MFLB'])
-            # self.CHART_3 = UIFunction_CHART(parent=self.ui.GP_0_4, title='A4', label=['Normal',
-            #                                                                           'LOCA', 'SGTR', 'MSLB', 'MFLB'])
-            # self.CHART_4 = UIFunction_CHART(parent=self.ui.GP_0_5, title='A5', label=['Normal',
-            #                                                                           'LOCA', 'SGTR', 'MSLB', 'MFLB'])
+            self.CHART_3 = UIFunction_CHART(parent=self.ui.GP_0_4, title='성헌', label=['Normal',
+                                                                                      'LOCA', 'SGTR', 'MSLB', 'MFLB'])
+            self.CHART_4 = UIFunction_CHART(parent=self.ui.GP_0_5, title='명훈', label=['Normal',
+                                                                                      'LOCA', 'SGTR', 'MSLB', 'MFLB'])
+            self.CHART_5 = UIFunction_CHART(parent=self.ui.GP_1_1, title='상훈', label=['Normal',
+                                                                                      'LOCA', 'SGTR', 'MSLB', 'MFLB'])
+            self.CHART_6 = UIFunction_CHART(parent=self.ui.GP_1_2, title='중황', label=['Normal',
+                                                                                      'LOCA', 'SGTR', 'MSLB', 'MFLB'])
+            self.CHART_7 = UIFunction_CHART(parent=self.ui.GP_1_3, title='어진', label=['Normal',
+                                                                                      'LOCA', 'SGTR', 'MSLB', 'MFLB'])
+            self.CHART_8 = UIFunction_CHART(parent=self.ui.GP_1_4, title='성광', label=['Normal',
+                                                                                      'LOCA', 'SGTR', 'MSLB', 'MFLB'])
             #
             # # >> FUNCTION
             self.ui.Content_menu_empty_0.clicked.connect(lambda: UIFunction_CLICK.toggleMenu(self, 300, True))
@@ -89,6 +97,12 @@ class Mainwindow(QMainWindow):
                 self.CHART_0.appendXYValue(line_nub=_, x=self.NET_OUT['Net_Count'], y=self.NET_OUT['Net_0'][_])
                 self.CHART_1.appendXYValue(line_nub=_, x=self.NET_OUT['Net_Count'], y=self.NET_OUT['Net_1'][_])
                 self.CHART_2.appendXYValue(line_nub=_, x=self.NET_OUT['Net_Count'], y=self.NET_OUT['Net_2'][_])
+                self.CHART_3.appendXYValue(line_nub=_, x=self.NET_OUT['Net_Count'], y=self.NET_OUT['Net_3'][_])
+                self.CHART_4.appendXYValue(line_nub=_, x=self.NET_OUT['Net_Count'], y=self.NET_OUT['Net_4'][_])
+                self.CHART_5.appendXYValue(line_nub=_, x=self.NET_OUT['Net_Count'], y=self.NET_OUT['Net_5'][_])
+                self.CHART_6.appendXYValue(line_nub=_, x=self.NET_OUT['Net_Count'], y=self.NET_OUT['Net_6'][_])
+                self.CHART_7.appendXYValue(line_nub=_, x=self.NET_OUT['Net_Count'], y=self.NET_OUT['Net_7'][_])
+                self.CHART_8.appendXYValue(line_nub=_, x=self.NET_OUT['Net_Count'], y=self.NET_OUT['Net_8'][_])
         pass
 
 if __name__ == '__main__':

@@ -103,7 +103,7 @@ class EX_module(multiprocessing.Process):
                     # self.NET_OUT['Net_1'].append(out)
                     # print(out)
                 #
-
+                print(len(NetToolBox.NetBox))
                 ##
                 get_input = np.array(NetToolBox.make_input_window_ST(nub=0, db=self.mem))
                 # NetBox return (1, 5) shape -> [0] -> (5)
@@ -115,12 +115,29 @@ class EX_module(multiprocessing.Process):
                 get_input = np.array(NetToolBox.make_input_window_ST(nub=2, db=self.mem))
                 self.NET_OUT_COPY['Net_2'] = NetToolBox.NetBox[2].predict(get_input)[0]
 
+                get_input = np.array(NetToolBox.make_input_window_ST(nub=3, db=self.mem))
+                self.NET_OUT_COPY['Net_3'] = NetToolBox.NetBox[3].predict(get_input)[0]
+
+                get_input = np.array(NetToolBox.make_input_window_ST(nub=4, db=self.mem))
+                self.NET_OUT_COPY['Net_4'] = NetToolBox.NetBox[4].predict(get_input)[0]
+
+                get_input = np.array(NetToolBox.make_input_window_ST(nub=5, db=self.mem))
+                self.NET_OUT_COPY['Net_5'] = NetToolBox.NetBox[5].predict(get_input)[0]
+
+                get_input = np.array(NetToolBox.make_input_window_ST(nub=6, db=self.mem))
+                self.NET_OUT_COPY['Net_6'] = NetToolBox.NetBox[6].predict(get_input)[0]
+
+                get_input = np.array(NetToolBox.make_input_window_ST(nub=7, db=self.mem))
+                self.NET_OUT_COPY['Net_7'] = NetToolBox.NetBox[7].predict(get_input)[0]
+
+                get_input = np.array(NetToolBox.make_input_window_ST(nub=8, db=self.mem))
+                self.NET_OUT_COPY['Net_8'] = NetToolBox.NetBox[8].predict(get_input)[0]
+
                 self.NET_OUT_COPY['Net_Count'] += 1
 
                 # Update NET_OUT memory
                 for NET_OUT_key in self.NET_OUT_COPY.keys():
                     self.NET_OUT[NET_OUT_key] = self.NET_OUT_COPY[NET_OUT_key]
-
 
                 ##
                 print('계산 종료! ....', end='\t')

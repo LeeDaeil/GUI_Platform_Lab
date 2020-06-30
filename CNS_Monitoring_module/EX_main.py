@@ -50,7 +50,7 @@ class generate_mem:
         return memory_dict
 
     def make_net_out(self):
-        memory_dict = {f'Net_{_}': [] for _ in range(10)}
+        memory_dict = {f'Net_{_}': [] for _ in range(11)}
         memory_dict['Net_Count'] = 0
         print('Net_out 메모리 생성 완료')
         return memory_dict
