@@ -24,8 +24,17 @@ class Mainwindow(QMainWindow):
 
         # Make DB
         self.db = self.make_db()
-        if os.path.isfile('Andb.csv'):
-            self.ANdb = pd.read_csv('Andb.csv').to_dict()
+        if os.path.isfile('Andb.txt'):
+            self.ANdb = {}
+            with open('Andb.txt', 'r') as f:
+                while True:
+                    temp = f.readline().split('\t')
+                    if temp[0] == '':
+                        break
+                    self.ANdb[temp[0]] = {
+                        'SYS': temp[1], 'TYPE': temp[2], 'ONECONT': temp[3], 'OnManOpen': temp[4],
+                        'OffAutoClose': temp[5]
+                    }
         else:
             self.ANdb = {}
 
@@ -50,6 +59,7 @@ class Mainwindow(QMainWindow):
             # Load PARA
             if self.ui.ID_input.text() in self.ANdb.keys():
                 print('Ok! Load')
+                print(self.ANdb)
                 self.check_nub(self.ui.Sys, self.ANdb[self.ui.ID_input.text()]['SYS'])
                 self.check_nub(self.ui.Type_bu, self.ANdb[self.ui.ID_input.text()]['TYPE'])
                 self.check_nub(self.ui.ID_0, self.ANdb[self.ui.ID_input.text()]['ONECONT'])
@@ -90,6 +100,9 @@ class Mainwindow(QMainWindow):
                 'OnManOpen': self.ui.ID_input_2.text(),
                 'OffAutoClose': self.ui.ID_input_3.text(),
             }
+            self.ui.ID_input.setText('')
+            self.ui.ID_input_2.setText('')
+            self.ui.ID_input_3.setText('')
 
     def get_nub(self, frame):
         fin_nub, iter_nub = 0, 0
@@ -110,8 +123,13 @@ class Mainwindow(QMainWindow):
 
     # END FILE
     def end_file_and_save(self):
-        out = pd.DataFrame(self.ANdb)
-        out.to_csv('Andb.csv')
+        with open('Andb.txt', 'w') as f:
+            for key in self.ANdb.keys():
+                f.writelines('{}\t{}\t{}\t{}\t{}\t{}\n'.format(key, self.ANdb[key]['SYS'], self.ANdb[key]['TYPE'],
+                                                             self.ANdb[key]['ONECONT'],
+                                                             self.ANdb[key]['OnManOpen'],
+                                                             self.ANdb[key]['OffAutoClose'],
+                                                             ))
         print("Save_file")
         sys.exit()
 

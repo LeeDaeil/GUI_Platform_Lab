@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'MainWinqQZRfu.ui'
+## Form generated from reading UI file 'MainWinIleLuL.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.0
 ##
@@ -110,6 +110,11 @@ class Ui_MainWindow(object):
         self.Onoff_4.setObjectName(u"Onoff_4")
 
         self.verticalLayout_2.addWidget(self.Onoff_4)
+
+        self.Onoff_5 = QRadioButton(self.Type_bu)
+        self.Onoff_5.setObjectName(u"Onoff_5")
+
+        self.verticalLayout_2.addWidget(self.Onoff_5)
 
         self.Ran_0 = QLabel(self.Type_bu)
         self.Ran_0.setObjectName(u"Ran_0")
@@ -258,6 +263,7 @@ class Ui_MainWindow(object):
         self.label_2 = QLabel(self.ID_1)
         self.label_2.setObjectName(u"label_2")
         self.label_2.setMinimumSize(QSize(120, 0))
+        self.label_2.setStyleSheet(u"color: rgb(9, 93, 0);")
         self.label_2.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout_2.addWidget(self.label_2)
@@ -354,7 +360,8 @@ class Ui_MainWindow(object):
         self.Onoff_1.setText(QCoreApplication.translate("MainWindow", u"On/Off Signal block on/off", None))
         self.Onoff_2.setText(QCoreApplication.translate("MainWindow", u"On/Off \ud788\ud130 on/off", None))
         self.Onoff_3.setText(QCoreApplication.translate("MainWindow", u"On/Off \ud38c\ud504 on/off", None))
-        self.Onoff_4.setText(QCoreApplication.translate("MainWindow", u"On/Off \uae30\uae30 on/off", None))
+        self.Onoff_4.setText(QCoreApplication.translate("MainWindow", u"On/Off \ubc38\ube0c on/off", None))
+        self.Onoff_5.setText(QCoreApplication.translate("MainWindow", u"On/Off \uae30\uae30 on/off", None))
         self.Ran_0.setText(QCoreApplication.translate("MainWindow", u"\uc870\uc808 \ubc84\ud2bc", None))
         self.Ran_1.setText(QCoreApplication.translate("MainWindow", u"\uc870\uc808 \ubc84\ud2bc (up/down) Setpoint \uc870\uc808 \ubc84\ud2bc", None))
         self.Ran_2.setText(QCoreApplication.translate("MainWindow", u"\uc870\uc808 \ubc84\ud2bc (up/down) \ubc38\ube0c\uac1c\ub3c4 \uc870\uc808 \ubc84\ud2bc", None))
