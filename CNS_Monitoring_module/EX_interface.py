@@ -47,21 +47,21 @@ class Mainwindow(QMainWindow):
             UIFunction_CLICK.initial_cond(self, self.mem)
             self.CHART_0 = UIFunction_CHART(parent=self.ui.GP_0_1, title='진의', label=['Normal',
                                                                                       'LOCA', 'SGTR', 'MSLB', 'MFLB'])
-            self.CHART_1 = UIFunction_CHART(parent=self.ui.GP_0_2, title='윤희1', label=['Normal',
+            self.CHART_1 = UIFunction_CHART(parent=self.ui.GP_1_4, title='윤희', label=['Normal',
                                                                                       'LOCA', 'SGTR', 'MSLB', 'MFLB'])
-            self.CHART_2 = UIFunction_CHART(parent=self.ui.GP_0_3, title='윤철', label=['Normal',
+            self.CHART_2 = UIFunction_CHART(parent=self.ui.GP_1_1, title='윤철', label=['Normal',
                                                                                       'LOCA', 'SGTR', 'MSLB', 'MFLB'])
             self.CHART_3 = UIFunction_CHART(parent=self.ui.GP_0_4, title='성헌', label=['Normal',
                                                                                       'LOCA', 'SGTR', 'MSLB', 'MFLB'])
             self.CHART_4 = UIFunction_CHART(parent=self.ui.GP_0_5, title='명훈', label=['Normal',
                                                                                       'LOCA', 'SGTR', 'MSLB', 'MFLB'])
-            self.CHART_5 = UIFunction_CHART(parent=self.ui.GP_1_1, title='상훈', label=['Normal',
+            self.CHART_5 = UIFunction_CHART(parent=self.ui.GP_0_3, title='상훈', label=['Normal',
                                                                                       'LOCA', 'SGTR', 'MSLB', 'MFLB'])
             self.CHART_6 = UIFunction_CHART(parent=self.ui.GP_1_2, title='중황', label=['Normal',
                                                                                       'LOCA', 'SGTR', 'MSLB', 'MFLB'])
             self.CHART_7 = UIFunction_CHART(parent=self.ui.GP_1_3, title='어진', label=['Normal',
                                                                                       'LOCA', 'SGTR', 'MSLB', 'MFLB'])
-            self.CHART_8 = UIFunction_CHART(parent=self.ui.GP_1_4, title='성광', label=['Normal',
+            self.CHART_8 = UIFunction_CHART(parent=self.ui.GP_0_2, title='성광', label=['Normal',
                                                                                       'LOCA', 'SGTR', 'MSLB', 'MFLB'])
             #
             # # >> FUNCTION

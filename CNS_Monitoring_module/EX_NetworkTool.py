@@ -36,9 +36,9 @@ class NetTool:
 
         # Model 1
         paralist.append(['UAVLEG1', 'UAVLEG2', 'UAVLEG3', 'ZINST58', 'ZINST75', 'ZINST73', 'ZINST74','ZINST30', 'ZINST78',
-                         'WFWLN1', 'WFWLN2', 'WFWLN3', 'ZINST26', 'ZINST22', 'BFV122','URHXUT','ZINST56','KBCDO23',
-                         'ZINST65', 'ZINST22', 'DSECON', 'WSTM1', 'WSTM2', 'WSTM3', 'KFAST', 'KSLOW','BPORV',
-                         'UNRHXUT', 'ZINST36'])
+        'WFWLN1', 'WFWLN2', 'WFWLN3', 'ZINST26', 'ZINST22', 'BFV122','URHXUT','ZINST56','KBCDO23',
+        'ZINST65', 'ZINST22', 'DSECON', 'WSTM1', 'WSTM2', 'WSTM3', 'KFAST', 'KSLOW','BPORV',
+        'UNRHXUT','WFPLN1','WFPLN2','WFPLN3','WTIN','BFV499', 'BFV489', 'BFV479'])
 
         # Model 2
         paralist.append(
@@ -50,10 +50,10 @@ class NetTool:
              ])
 
         # Model 3
-        paralist.append(['ZINST69', 'ZINST58', 'KLAMPO118', 'KLAMPO143', 'BHV302', 'Normal_0', 'KLAMPO337', 'KLAMPO312',
-        'ZINST81', 'ZINST80', 'WSTM1', 'WSTM2', 'WSTM3', 'WFWLN1', 'WFWLN2', 'WFWLN3', 'ZINST22', 'DSECON',
-        'UHOLEG1', 'UHOLEG2', 'UHOLEG3', 'UCOLEG1', 'UCOLEG2', 'UCOLEG3', 'UAVLEGS', 'KLAMPO312',
-        'KLAMPO57', 'KLAMPO64', 'KLAMPO241', 'KLAMPO230', 'KLAMPO152', 'KLAMPO22', 'KLAMPO9', 'KLAMPO6', 'KLAMPO21'])
+        paralist.append(['ZINST69', 'ZINST58', 'KLAMPO118', 'KLAMPO143', 'BHV302', 'Normal_0', 'KLAMPO337', 'KLAMPO312', 'KBCDO15', 'KFAST',
+        'ZINST81', 'ZINST80', 'WSTM1', 'WSTM2', 'WSTM3', 'WFWLN1', 'WFWLN2', 'WFWLN3', 'ZINST22', 'DSECON', 'UCTMT',
+        'KLAMPO312', 'ZINST101', 'ZINST102', 'ZINST78', 'ZINST77', 'ZINST76', 'ZINST72', 'ZINST71', 'ZINST70', 'BPORV',
+        'ZINST75', 'KLAMPO57', 'KLAMPO64', 'KLAMPO241', 'KLAMPO230', 'KLAMPO152', 'KLAMPO22', 'KLAMPO9', 'KLAMPO6', 'KLAMPO21'])
 
         # Model 4
         paralist.append(['BPSV10','KLAMPO118','BTV418','BPORV','KLAMPO143',
@@ -164,9 +164,10 @@ class NetTool:
             # hiden1 = tf.keras.layers.Dense(150)(hiden)
             # hiden = tf.keras.layers.Dense(150)(hiden1)
         elif nub == 1:
-            hiden = tf.keras.layers.Dense(300, activation='relu')(inputs)
-            hiden1 = tf.keras.layers.Dense(300)(hiden)
-            hiden = tf.keras.layers.Dense(300)(hiden1)
+            hiden = tf.keras.layers.Dense(150, activation='relu')(inputs)
+            hiden = tf.keras.layers.Dense(150, activation='relu')(hiden)
+            hiden = tf.keras.layers.Dense(150)(hiden)
+            hiden = tf.keras.layers.Dense(100)(hiden)
         elif nub == 2:
             hiden = tf.keras.layers.Dense(200, activation='relu')(inputs)
             hiden1 = tf.keras.layers.Dense(100)(hiden)
@@ -183,8 +184,8 @@ class NetTool:
             hiden = tf.keras.layers.Dense(200)(hiden)
             hiden = tf.keras.layers.Dense(200)(hiden)
         elif nub == 6:
-            hiden = tf.keras.layers.Dense(500)(inputs)
-            hiden = tf.keras.layers.Dense(150)(hiden)
+            hiden = tf.keras.layers.Dense(300, activation='relu')(inputs)
+            hiden = tf.keras.layers.Dense(150, activation='relu')(hiden)
         elif nub == 7:
             hiden = tf.keras.layers.Dense(300, activation='relu')(inputs)
             hiden = tf.keras.layers.Dense(200, activation='relu')(hiden)

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'MainInterfaceuWFpQx.ui'
+## Form generated from reading UI file 'MainInterfacefXvpCw.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.0
 ##
@@ -20,7 +20,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(148, 225)
+        MainWindow.resize(258, 152)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
@@ -30,7 +30,9 @@ class Ui_MainWindow(object):
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_2 = QVBoxLayout(self.frame)
+        self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.ShowTime = QLabel(self.frame)
         self.ShowTime.setObjectName(u"ShowTime")
         self.ShowTime.setStyleSheet(u"font: 28pt \"Adobe Arabic\";")
@@ -38,20 +40,56 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addWidget(self.ShowTime)
 
+        self.frame_2 = QFrame(self.frame)
+        self.frame_2.setObjectName(u"frame_2")
+        self.frame_2.setMaximumSize(QSize(16777215, 20))
+        self.frame_2.setFrameShape(QFrame.StyledPanel)
+        self.frame_2.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout = QHBoxLayout(self.frame_2)
+        self.horizontalLayout.setSpacing(0)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.label = QLabel(self.frame_2)
+        self.label.setObjectName(u"label")
+        self.label.setMinimumSize(QSize(100, 0))
+
+        self.horizontalLayout.addWidget(self.label)
+
+        self.StPoint = QLineEdit(self.frame_2)
+        self.StPoint.setObjectName(u"StPoint")
+
+        self.horizontalLayout.addWidget(self.StPoint)
+
+        self.label_2 = QLabel(self.frame_2)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setMinimumSize(QSize(50, 0))
+        self.label_2.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout.addWidget(self.label_2)
+
+        self.EndPoint = QLineEdit(self.frame_2)
+        self.EndPoint.setObjectName(u"EndPoint")
+
+        self.horizontalLayout.addWidget(self.EndPoint)
+
+
+        self.verticalLayout_2.addWidget(self.frame_2)
+
 
         self.verticalLayout.addWidget(self.frame)
 
         self.pushButton = QPushButton(self.centralwidget)
         self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setMinimumSize(QSize(0, 100))
-        self.pushButton.setMaximumSize(QSize(16777215, 100))
+        self.pushButton.setMinimumSize(QSize(0, 25))
+        self.pushButton.setMaximumSize(QSize(16777215, 50))
+        self.pushButton.setCheckable(True)
 
         self.verticalLayout.addWidget(self.pushButton)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 148, 21))
+        self.menubar.setGeometry(QRect(0, 0, 258, 21))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -65,6 +103,8 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.ShowTime.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Rest Time", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"--->", None))
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Start", None))
     # retranslateUi
 

@@ -154,7 +154,7 @@ class UIFunction_CHART:
         parent.addWidget(self.makeChartView())
         self.line_series = [QtCharts.QLineSeries() for _ in range(self.max_line)]
         [self.line_series[_].setName(self.label[_]) for _ in range(self.max_line)]
-        self.min_max_val = {'max_x':0, 'max_y':0, 'min_x':0, 'min_y':0}
+        self.min_max_val = {'max_x':0, 'max_y':1.05, 'min_x':0, 'min_y':0}
 
         self.line_axis_x = QtCharts.QValueAxis()
         self.line_axis_x.setTickCount(5)
@@ -163,6 +163,8 @@ class UIFunction_CHART:
 
     def makeChartView(self):
         self.chartCanv = QtCharts.QChart()
+        self.chartCanv.setMargins(QtCore.QMargins(0, 0, 0, 0))
+
         # self.chartCanv.setAnimationOptions(QtCharts.QChart.SeriesAnimations)
         # self.chartCanv.setAnimationOptions(QtCharts.QChart.AllAnimations)
         self.chartCanv.setTitle(self.title)
@@ -173,6 +175,8 @@ class UIFunction_CHART:
         size = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         size.setHorizontalStretch(0)
         self.chartView.setSizePolicy(size)
+
+
 
         return self.chartView
 
@@ -186,16 +190,16 @@ class UIFunction_CHART:
             if int(get_point.x()) != x:
                 self.line_series[line_nub].append(x, y)
                 if x >= self.min_max_val['max_x'] * 0.9:
-                    self.min_max_val['max_x'] = x * 1.1
-                if y >= self.min_max_val['max_y'] * 0.9:
-                    self.min_max_val['max_y'] = y * 1.1
+                    self.min_max_val['max_x'] = x * 1.005
+                # if y >= self.min_max_val['max_y'] * 0.9:
+                #     self.min_max_val['max_y'] = y * 1.1
                 self.update_CHART(line_nub)
         else:
             self.line_series[line_nub].append(x, y)
             if x >= self.min_max_val['max_x'] * 0.9:
                 self.min_max_val['max_x'] = x * 1.1
-            if y >= self.min_max_val['max_y'] * 0.9:
-                self.min_max_val['max_y'] = y * 1.1
+            # if y >= self.min_max_val['max_y'] * 0.9:
+            #     self.min_max_val['max_y'] = y * 1.005
             self.update_CHART(line_nub)
 
     def update_CHART(self, line_nub):
@@ -208,10 +212,10 @@ class UIFunction_CHART:
         if self.min_max_val['max_x'] > 100:
             self.line_axis_x.setRange(self.min_max_val['max_x']-100, self.min_max_val['max_x'])
         else:
-            self.line_axis_x.setRange(0, self.min_max_val['max_x'])
+            self.line_axis_x.setRange(self.min_max_val['min_x'], self.min_max_val['max_x'])
         self.line_axis_y = QtCharts.QValueAxis()
         self.line_axis_y.setTickCount(5)
-        self.line_axis_y.setRange(0, self.min_max_val['max_y'])
+        self.line_axis_y.setRange(self.min_max_val['min_y'], self.min_max_val['max_y'])
 
         self.chartCanv.addSeries(self.line_series[line_nub])
         self.chartCanv.addAxis(self.line_axis_x, Qt.AlignBottom)

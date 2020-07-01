@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainformVnSdjm.ui'
+## Form generated from reading UI file 'mainformVnpwSV.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.0
 ##
@@ -20,7 +20,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1000, 782)
+        MainWindow.resize(1014, 782)
         MainWindow.setMinimumSize(QSize(1000, 500))
         MainWindow.setStyleSheet(u"background-color: rgb(255, 255, 255);")
         self.centralwidget = QWidget(MainWindow)
@@ -88,8 +88,15 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.Top_width_output = QLabel(self.Top_width)
         self.Top_width_output.setObjectName(u"Top_width_output")
-        self.Top_width_output.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"font: 75 14pt \"\ub9d1\uc740 \uace0\ub515\";")
+        self.Top_width_output.setStyleSheet(u"QLabel {\n"
+"    border: 2px solid rgb(52,49,89);\n"
+"    border-radius: 5px;\n"
+"    padding: 0 8px;\n"
+"    background: rgb(52,49,89);\n"
+"	font: 75 14pt \"\ub9d1\uc740 \uace0\ub515\";\n"
+"	color: rgb(255, 255, 255);\n"
+"    selection-background-color: darkgray;\n"
+"}")
         self.Top_width_output.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.horizontalLayout_3.addWidget(self.Top_width_output)
@@ -97,8 +104,15 @@ class Ui_MainWindow(object):
         self.Top_width_emp = QLabel(self.Top_width)
         self.Top_width_emp.setObjectName(u"Top_width_emp")
         self.Top_width_emp.setMaximumSize(QSize(300, 16777215))
-        self.Top_width_emp.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"font: 75 14pt \"\ub9d1\uc740 \uace0\ub515\";")
+        self.Top_width_emp.setStyleSheet(u"QLabel {\n"
+"    border: 2px solid rgb(52,49,89);\n"
+"    border-radius: 5px;\n"
+"    padding: 0 8px;\n"
+"    background: rgb(52,49,89);\n"
+"	font: 75 14pt \"\ub9d1\uc740 \uace0\ub515\";\n"
+"	color: rgb(255, 255, 255);\n"
+"    selection-background-color: darkgray;\n"
+"}")
         self.Top_width_emp.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout_3.addWidget(self.Top_width_emp)
@@ -142,19 +156,22 @@ class Ui_MainWindow(object):
         self.Ini_setting.setStyleSheet(u"QPushButton {\n"
 "	color: rgb(255, 255, 255);\n"
 "	font: 75 9pt \"\ub9d1\uc740 \uace0\ub515\";\n"
-"	border: 2px solid  #dddddd;\n"
+"    border-radius: 10px;\n"
+"	background-color: rgb(52,49,89);\n"
 "}\n"
 "QPushButton:hover {\n"
-"	color: rgb(0, 0, 0);\n"
+"	color: rgb(255, 255, 255);\n"
 "	font: 75 9pt \"\ub9d1\uc740 \uace0\ub515\";\n"
-"	border: 2px solid  #dddddd;\n"
-"	background-color: rgb(229, 229, 229);\n"
+"	border: 1px solid  #dddddd;\n"
+"    border-radius: 10px;\n"
+"	background-color: rgb(52,49,89);\n"
 "}\n"
 "QPushButton:pressed{\n"
 "	color: rgb(204, 18, 89);\n"
 "	font: 75 9pt \"\ub9d1\uc740 \uace0\ub515\";\n"
 "	border: 2px solid  #dddddd;\n"
-"	background-color: rgb(229, 229, 229);\n"
+"    border-radius: 10px;\n"
+"	background-color: rgb(52,49,89);\n"
 "}\n"
 "")
 
@@ -162,7 +179,14 @@ class Ui_MainWindow(object):
 
         self.Line_ini_0 = QLineEdit(self.Content_menu)
         self.Line_ini_0.setObjectName(u"Line_ini_0")
-        self.Line_ini_0.setStyleSheet(u"color: rgb(255, 255, 255);")
+        self.Line_ini_0.setStyleSheet(u"QLineEdit {\n"
+"    border: 2px solid rgb(52,49,89);\n"
+"    border-radius: 5px;\n"
+"    padding: 0 8px;\n"
+"    background: rgb(52,49,89);\n"
+"	color: rgb(255, 255, 255);\n"
+"    selection-background-color: darkgray;\n"
+"}")
         self.Line_ini_0.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_4.addWidget(self.Line_ini_0)
@@ -179,19 +203,22 @@ class Ui_MainWindow(object):
         self.Mal_setting.setStyleSheet(u"QPushButton {\n"
 "	color: rgb(255, 255, 255);\n"
 "	font: 75 9pt \"\ub9d1\uc740 \uace0\ub515\";\n"
-"	border: 2px solid  #dddddd;\n"
+"    border-radius: 10px;\n"
+"	background-color: rgb(52,49,89);\n"
 "}\n"
 "QPushButton:hover {\n"
-"	color: rgb(0, 0, 0);\n"
+"	color: rgb(255, 255, 255);\n"
 "	font: 75 9pt \"\ub9d1\uc740 \uace0\ub515\";\n"
-"	border: 2px solid  #dddddd;\n"
-"	background-color: rgb(229, 229, 229);\n"
+"	border: 1px solid  #dddddd;\n"
+"    border-radius: 10px;\n"
+"	background-color: rgb(52,49,89);\n"
 "}\n"
 "QPushButton:pressed{\n"
 "	color: rgb(204, 18, 89);\n"
 "	font: 75 9pt \"\ub9d1\uc740 \uace0\ub515\";\n"
 "	border: 2px solid  #dddddd;\n"
-"	background-color: rgb(229, 229, 229);\n"
+"    border-radius: 10px;\n"
+"	background-color: rgb(52,49,89);\n"
 "}\n"
 "")
 
@@ -208,7 +235,14 @@ class Ui_MainWindow(object):
 
         self.Line_mal_0_case = QLineEdit(self.Content_menu)
         self.Line_mal_0_case.setObjectName(u"Line_mal_0_case")
-        self.Line_mal_0_case.setStyleSheet(u"color: rgb(255, 255, 255);")
+        self.Line_mal_0_case.setStyleSheet(u"QLineEdit {\n"
+"    border: 2px solid rgb(52,49,89);\n"
+"    border-radius: 5px;\n"
+"    padding: 0 8px;\n"
+"    background: rgb(52,49,89);\n"
+"	color: rgb(255, 255, 255);\n"
+"    selection-background-color: darkgray;\n"
+"}")
         self.Line_mal_0_case.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_4.addWidget(self.Line_mal_0_case)
@@ -224,7 +258,14 @@ class Ui_MainWindow(object):
 
         self.Line_mal_1_nub = QLineEdit(self.Content_menu)
         self.Line_mal_1_nub.setObjectName(u"Line_mal_1_nub")
-        self.Line_mal_1_nub.setStyleSheet(u"color: rgb(255, 255, 255);")
+        self.Line_mal_1_nub.setStyleSheet(u"QLineEdit {\n"
+"    border: 2px solid rgb(52,49,89);\n"
+"    border-radius: 5px;\n"
+"    padding: 0 8px;\n"
+"    background: rgb(52,49,89);\n"
+"	color: rgb(255, 255, 255);\n"
+"    selection-background-color: darkgray;\n"
+"}")
         self.Line_mal_1_nub.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_4.addWidget(self.Line_mal_1_nub)
@@ -241,7 +282,14 @@ class Ui_MainWindow(object):
         self.Line_mal_2_time = QLineEdit(self.Content_menu)
         self.Line_mal_2_time.setObjectName(u"Line_mal_2_time")
         self.Line_mal_2_time.setMaximumSize(QSize(16777215, 20))
-        self.Line_mal_2_time.setStyleSheet(u"color: rgb(255, 255, 255);")
+        self.Line_mal_2_time.setStyleSheet(u"QLineEdit {\n"
+"    border: 2px solid rgb(52,49,89);\n"
+"    border-radius: 5px;\n"
+"    padding: 0 8px;\n"
+"    background: rgb(52,49,89);\n"
+"	color: rgb(255, 255, 255);\n"
+"    selection-background-color: darkgray;\n"
+"}")
         self.Line_mal_2_time.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_4.addWidget(self.Line_mal_2_time)
@@ -262,7 +310,7 @@ class Ui_MainWindow(object):
         self.Content_right = QFrame(self.Content)
         self.Content_right.setObjectName(u"Content_right")
         self.Content_right.setStyleSheet(u"background-color: rgb(255, 255, 255);")
-        self.Content_right.setFrameShape(QFrame.StyledPanel)
+        self.Content_right.setFrameShape(QFrame.NoFrame)
         self.Content_right.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_4 = QHBoxLayout(self.Content_right)
         self.horizontalLayout_4.setSpacing(0)
@@ -270,33 +318,39 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.Coten_right_1_bot = QFrame(self.Content_right)
         self.Coten_right_1_bot.setObjectName(u"Coten_right_1_bot")
-        self.Coten_right_1_bot.setFrameShape(QFrame.StyledPanel)
+        self.Coten_right_1_bot.setFrameShape(QFrame.NoFrame)
         self.Coten_right_1_bot.setFrameShadow(QFrame.Raised)
+        self.Coten_right_1_bot.setLineWidth(0)
         self.verticalLayout_7 = QVBoxLayout(self.Coten_right_1_bot)
         self.verticalLayout_7.setSpacing(0)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
         self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
         self.GP_1_5 = QVBoxLayout()
+        self.GP_1_5.setSpacing(0)
         self.GP_1_5.setObjectName(u"GP_1_5")
 
         self.verticalLayout_7.addLayout(self.GP_1_5)
 
         self.GP_1_4 = QVBoxLayout()
+        self.GP_1_4.setSpacing(0)
         self.GP_1_4.setObjectName(u"GP_1_4")
 
         self.verticalLayout_7.addLayout(self.GP_1_4)
 
         self.GP_1_3 = QVBoxLayout()
+        self.GP_1_3.setSpacing(0)
         self.GP_1_3.setObjectName(u"GP_1_3")
 
         self.verticalLayout_7.addLayout(self.GP_1_3)
 
         self.GP_1_2 = QVBoxLayout()
+        self.GP_1_2.setSpacing(0)
         self.GP_1_2.setObjectName(u"GP_1_2")
 
         self.verticalLayout_7.addLayout(self.GP_1_2)
 
         self.GP_1_1 = QVBoxLayout()
+        self.GP_1_1.setSpacing(0)
         self.GP_1_1.setObjectName(u"GP_1_1")
 
         self.verticalLayout_7.addLayout(self.GP_1_1)
@@ -306,33 +360,39 @@ class Ui_MainWindow(object):
 
         self.Coten_right_0_top = QFrame(self.Content_right)
         self.Coten_right_0_top.setObjectName(u"Coten_right_0_top")
-        self.Coten_right_0_top.setFrameShape(QFrame.StyledPanel)
+        self.Coten_right_0_top.setFrameShape(QFrame.NoFrame)
         self.Coten_right_0_top.setFrameShadow(QFrame.Raised)
+        self.Coten_right_0_top.setLineWidth(0)
         self.verticalLayout_6 = QVBoxLayout(self.Coten_right_0_top)
         self.verticalLayout_6.setSpacing(0)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.GP_0_5 = QVBoxLayout()
+        self.GP_0_5.setSpacing(0)
         self.GP_0_5.setObjectName(u"GP_0_5")
 
         self.verticalLayout_6.addLayout(self.GP_0_5)
 
         self.GP_0_4 = QVBoxLayout()
+        self.GP_0_4.setSpacing(0)
         self.GP_0_4.setObjectName(u"GP_0_4")
 
         self.verticalLayout_6.addLayout(self.GP_0_4)
 
         self.GP_0_3 = QVBoxLayout()
+        self.GP_0_3.setSpacing(0)
         self.GP_0_3.setObjectName(u"GP_0_3")
 
         self.verticalLayout_6.addLayout(self.GP_0_3)
 
         self.GP_0_2 = QVBoxLayout()
+        self.GP_0_2.setSpacing(0)
         self.GP_0_2.setObjectName(u"GP_0_2")
 
         self.verticalLayout_6.addLayout(self.GP_0_2)
 
         self.GP_0_1 = QVBoxLayout()
+        self.GP_0_1.setSpacing(0)
         self.GP_0_1.setObjectName(u"GP_0_1")
 
         self.verticalLayout_6.addLayout(self.GP_0_1)

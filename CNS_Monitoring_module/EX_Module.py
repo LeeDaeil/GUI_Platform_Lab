@@ -103,7 +103,6 @@ class EX_module(multiprocessing.Process):
                     # self.NET_OUT['Net_1'].append(out)
                     # print(out)
                 #
-                print(len(NetToolBox.NetBox))
                 ##
                 get_input = np.array(NetToolBox.make_input_window_ST(nub=0, db=self.mem))
                 # NetBox return (1, 5) shape -> [0] -> (5)

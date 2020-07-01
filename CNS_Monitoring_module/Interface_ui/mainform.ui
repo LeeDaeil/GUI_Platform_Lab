@@ -539,7 +539,7 @@ font: 75 9pt &quot;맑은 고딕&quot;;</string>
           <string notr="true">background-color: rgb(255, 255, 255);</string>
          </property>
          <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
+          <enum>QFrame::NoFrame</enum>
          </property>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
@@ -563,10 +563,13 @@ font: 75 9pt &quot;맑은 고딕&quot;;</string>
           <item>
            <widget class="QFrame" name="Coten_right_1_bot">
             <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
+             <enum>QFrame::NoFrame</enum>
             </property>
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
+            </property>
+            <property name="lineWidth">
+             <number>0</number>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_7">
              <property name="spacing">
@@ -585,19 +588,39 @@ font: 75 9pt &quot;맑은 고딕&quot;;</string>
               <number>0</number>
              </property>
              <item>
-              <layout class="QVBoxLayout" name="GP_1_5"/>
+              <layout class="QVBoxLayout" name="GP_1_5">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+              </layout>
              </item>
              <item>
-              <layout class="QVBoxLayout" name="GP_1_4"/>
+              <layout class="QVBoxLayout" name="GP_1_4">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+              </layout>
              </item>
              <item>
-              <layout class="QVBoxLayout" name="GP_1_3"/>
+              <layout class="QVBoxLayout" name="GP_1_3">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+              </layout>
              </item>
              <item>
-              <layout class="QVBoxLayout" name="GP_1_2"/>
+              <layout class="QVBoxLayout" name="GP_1_2">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+              </layout>
              </item>
              <item>
-              <layout class="QVBoxLayout" name="GP_1_1"/>
+              <layout class="QVBoxLayout" name="GP_1_1">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+              </layout>
              </item>
             </layout>
            </widget>
@@ -605,10 +628,13 @@ font: 75 9pt &quot;맑은 고딕&quot;;</string>
           <item>
            <widget class="QFrame" name="Coten_right_0_top">
             <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
+             <enum>QFrame::NoFrame</enum>
             </property>
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
+            </property>
+            <property name="lineWidth">
+             <number>0</number>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_6">
              <property name="spacing">
@@ -627,19 +653,39 @@ font: 75 9pt &quot;맑은 고딕&quot;;</string>
               <number>0</number>
              </property>
              <item>
-              <layout class="QVBoxLayout" name="GP_0_5"/>
+              <layout class="QVBoxLayout" name="GP_0_5">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+              </layout>
              </item>
              <item>
-              <layout class="QVBoxLayout" name="GP_0_4"/>
+              <layout class="QVBoxLayout" name="GP_0_4">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+              </layout>
              </item>
              <item>
-              <layout class="QVBoxLayout" name="GP_0_3"/>
+              <layout class="QVBoxLayout" name="GP_0_3">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+              </layout>
              </item>
              <item>
-              <layout class="QVBoxLayout" name="GP_0_2"/>
+              <layout class="QVBoxLayout" name="GP_0_2">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+              </layout>
              </item>
              <item>
-              <layout class="QVBoxLayout" name="GP_0_1"/>
+              <layout class="QVBoxLayout" name="GP_0_1">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+              </layout>
              </item>
             </layout>
            </widget>
