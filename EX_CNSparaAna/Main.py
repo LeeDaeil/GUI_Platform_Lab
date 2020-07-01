@@ -22,13 +22,17 @@ class Mainwindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        self.setWindowTitle('F1:입력 변수 체크, F2:입력 변수 찾기, F3: 뒤로 검토 F4: 앞으로 검토')
+
+        self.checkVal = 0
+
         # Make DB
         self.db = self.make_db()
         if os.path.isfile('Andb.txt'):
             self.ANdb = {}
             with open('Andb.txt', 'r') as f:
                 while True:
-                    temp = f.readline().split('\t')
+                    temp = f.readline().split('\n')[0].split('\t')
                     if temp[0] == '':
                         break
                     self.ANdb[temp[0]] = {
@@ -55,20 +59,46 @@ class Mainwindow(QMainWindow):
 
     def keyPressEvent(self, e):
         # Find
-        if e.key() == Qt.Key_F2:
-            # Load PARA
-            if self.ui.ID_input.text() in self.ANdb.keys():
-                print('Ok! Load')
-                print(self.ANdb)
-                self.check_nub(self.ui.Sys, self.ANdb[self.ui.ID_input.text()]['SYS'])
-                self.check_nub(self.ui.Type_bu, self.ANdb[self.ui.ID_input.text()]['TYPE'])
-                self.check_nub(self.ui.ID_0, self.ANdb[self.ui.ID_input.text()]['ONECONT'])
-                self.ui.ID_input_2.setText(self.ANdb[self.ui.ID_input.text()]['OnManOpen'])
-                self.ui.ID_input_3.setText(self.ANdb[self.ui.ID_input.text()]['OffAutoClose'])
+        if e.key() == Qt.Key_F2 or e.key() == Qt.Key_F3 or e.key() == Qt.Key_F4:
+            if e.key() == Qt.Key_F3 or e.key() == Qt.Key_F4:
+                one_key_pa = list(self.ANdb.keys())[self.checkVal]
+                self.ui.ID_input.setText(one_key_pa)
+                if e.key() == Qt.Key_F4:
+                    self.checkVal += 1
+                else:
+                    self.checkVal -= 1
+
+                if self.checkVal >= len(self.ANdb.keys()):
+                    self.checkVal = len(self.ANdb.keys())-1
+                if self.checkVal < 0:
+                    self.checkVal = 0
+                # Load PARA
+                if self.ui.ID_input.text() in self.ANdb.keys():
+                    print('Ok! Load')
+                    print(self.ANdb)
+                    self.check_nub(self.ui.Sys, self.ANdb[self.ui.ID_input.text()]['SYS'])
+                    self.check_nub(self.ui.Type_bu, self.ANdb[self.ui.ID_input.text()]['TYPE'])
+                    self.check_nub(self.ui.ID_0, self.ANdb[self.ui.ID_input.text()]['ONECONT'])
+                    self.ui.ID_input_2.setText(self.ANdb[self.ui.ID_input.text()]['OnManOpen'])
+                    self.ui.ID_input_3.setText(self.ANdb[self.ui.ID_input.text()]['OffAutoClose'])
+                else:
+                    print('No para')
+                    self.ui.Des_out.setText('No PARA in ANdb =============')
+                    self.ui.Des_out.setStyleSheet('color: rgb(255, 0, 0);')
             else:
-                print('No para')
-                self.ui.Des_out.setText('No PARA in ANdb =============')
-                self.ui.Des_out.setStyleSheet('color: rgb(255, 0, 0);')
+                # Load PARA
+                if self.ui.ID_input.text() in self.ANdb.keys():
+                    print('Ok! Load')
+                    print(self.ANdb)
+                    self.check_nub(self.ui.Sys, self.ANdb[self.ui.ID_input.text()]['SYS'])
+                    self.check_nub(self.ui.Type_bu, self.ANdb[self.ui.ID_input.text()]['TYPE'])
+                    self.check_nub(self.ui.ID_0, self.ANdb[self.ui.ID_input.text()]['ONECONT'])
+                    self.ui.ID_input_2.setText(self.ANdb[self.ui.ID_input.text()]['OnManOpen'])
+                    self.ui.ID_input_3.setText(self.ANdb[self.ui.ID_input.text()]['OffAutoClose'])
+                else:
+                    print('No para')
+                    self.ui.Des_out.setText('No PARA in ANdb =============')
+                    self.ui.Des_out.setStyleSheet('color: rgb(255, 0, 0);')
 
         if e.key() == Qt.Key_F1:
             # ID
@@ -78,6 +108,13 @@ class Mainwindow(QMainWindow):
             else:
                 self.ui.Des_out.setText('No PARA =============')
                 self.ui.Des_out.setStyleSheet('color: rgb(255, 0, 0);')
+
+            # Automatic fill
+            if self.ui.ID_input_2.text() == '' and self.ui.ID_input_3.text() == '':
+                self.ui.ID_input_2.setText('KSWO')
+                self.ui.ID_input_3.setText('KSWO')
+            if self.ui.ID_yes.isChecked():
+                self.ui.ID_input_3.setText(self.ui.ID_input_2.text())
 
             # Check Control val
             if self.ui.ID_input_2.text() in self.db.keys():
@@ -114,6 +151,7 @@ class Mainwindow(QMainWindow):
         return fin_nub
 
     def check_nub(self, frame, nub):
+        nub = int(nub)
         fin_nub, iter_nub = 0, 0
         for child in frame.children():
             if type(child) is type(QRadioButton()):
@@ -125,11 +163,9 @@ class Mainwindow(QMainWindow):
     def end_file_and_save(self):
         with open('Andb.txt', 'w') as f:
             for key in self.ANdb.keys():
-                f.writelines('{}\t{}\t{}\t{}\t{}\t{}\n'.format(key, self.ANdb[key]['SYS'], self.ANdb[key]['TYPE'],
-                                                             self.ANdb[key]['ONECONT'],
-                                                             self.ANdb[key]['OnManOpen'],
-                                                             self.ANdb[key]['OffAutoClose'],
-                                                             ))
+                f.write('{}\t{}\t{}\t{}\t{}\t{}\n'.format(key, self.ANdb[key]['SYS'], self.ANdb[key]['TYPE'],
+                                                          self.ANdb[key]['ONECONT'],self.ANdb[key]['OnManOpen'],
+                                                          self.ANdb[key]['OffAutoClose'],))
         print("Save_file")
         sys.exit()
 
