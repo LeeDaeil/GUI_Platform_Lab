@@ -8,7 +8,7 @@ from CNS_Monitoring_module.EX_CNS_Send_UDP import *
 
 
 class RUN_FREEZE(multiprocessing.Process):
-    def __init__(self, mem, IP, Port):
+    def __init__(self, mem, IP, Port, tick=5):
         multiprocessing.Process.__init__(self)
         self.address = (IP, Port)
 
@@ -21,7 +21,7 @@ class RUN_FREEZE(multiprocessing.Process):
         # SIZE BUFFER
         self.size_buffer_mem = 46008
         # SEND TICK
-        self.want_tick = 5
+        self.want_tick = tick
 
     # --------------------------------------------------------------------------------
     def call_cns_udp_sender(self):

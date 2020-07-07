@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>938</width>
-    <height>682</height>
+    <width>763</width>
+    <height>845</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout_4">
     <property name="spacing">
      <number>0</number>
     </property>
@@ -31,123 +31,551 @@
      <number>0</number>
     </property>
     <item>
-     <widget class="QFrame" name="Sys">
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>0</height>
-       </size>
-      </property>
+     <widget class="QFrame" name="Top_bar">
       <property name="maximumSize">
        <size>
-        <width>80</width>
-        <height>16777215</height>
+        <width>16777215</width>
+        <height>40</height>
        </size>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(29, 28, 53);
+</string>
+      </property>
       <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
+       <enum>QFrame::NoFrame</enum>
       </property>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
        <item>
-        <widget class="QRadioButton" name="SysRCS">
-         <property name="text">
-          <string>RCS</string>
+        <widget class="QFrame" name="Top_toggle">
+         <property name="maximumSize">
+          <size>
+           <width>100</width>
+           <height>100</height>
+          </size>
          </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Plain</enum>
+         </property>
+         <property name="lineWidth">
+          <number>0</number>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="Run">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+	font: 70 14pt &quot;맑은 고딕&quot;;
+	background-color: rgb(255, 209, 0);
+}
+QPushButton:hover {
+	font: 70 14pt &quot;맑은 고딕&quot;;
+	background-color: rgb(255, 93, 86);
+}
+QPushButton:checked {
+	font: 70 14pt &quot;맑은 고딕&quot;;
+	background-color: rgb(0, 93, 86);
+	border: none; 
+}
+
+</string>
+            </property>
+            <property name="text">
+             <string>RUN</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
-        <widget class="QRadioButton" name="SysCVCS">
-         <property name="text">
-          <string>CVCS</string>
+        <widget class="QFrame" name="Top_width">
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
          </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="SysRHR">
-         <property name="text">
-          <string>RHR</string>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
          </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="SysMSTB">
-         <property name="text">
-          <string>MS/TB</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="SysFWS">
-         <property name="text">
-          <string>FWS</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="SysCOND">
-         <property name="text">
-          <string>COND</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="SysELEC">
-         <property name="text">
-          <string>ELEC</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="SysROD">
-         <property name="text">
-          <string>ROD</string>
-         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QLabel" name="Top_width_output">
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+    border: 2px solid rgb(52,49,89);
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(52,49,89);
+	font: 75 14pt &quot;맑은 고딕&quot;;
+	color: rgb(255, 255, 255);
+    selection-background-color: darkgray;
+}</string>
+            </property>
+            <property name="text">
+             <string>Current Condition:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="Top_width_emp">
+            <property name="maximumSize">
+             <size>
+              <width>300</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+    border: 2px solid rgb(52,49,89);
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(52,49,89);
+	font: 75 14pt &quot;맑은 고딕&quot;;
+	color: rgb(255, 255, 255);
+    selection-background-color: darkgray;
+}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
       </layout>
      </widget>
     </item>
     <item>
-     <widget class="QFrame" name="Right">
+     <widget class="QFrame" name="Bottom">
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
       </property>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <layout class="QGridLayout" name="gridLayout">
-       <property name="leftMargin">
-        <number>5</number>
-       </property>
-       <property name="topMargin">
-        <number>5</number>
-       </property>
-       <property name="rightMargin">
-        <number>5</number>
-       </property>
-       <property name="bottomMargin">
-        <number>5</number>
-       </property>
-       <property name="spacing">
-        <number>0</number>
-       </property>
-       <item row="0" column="0">
-        <widget class="QTableView" name="ShowTable">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
-         </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QFrame" name="Content_menu">
          <property name="maximumSize">
           <size>
-           <width>16777215</width>
+           <width>150</width>
            <height>16777215</height>
           </size>
          </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="Ini_setting">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+	font: 75 9pt &quot;맑은 고딕&quot;;
+    border-radius: 10px;
+	background-color: rgb(52,49,89);
+}
+QPushButton:hover {
+	color: rgb(255, 255, 255);
+	font: 75 9pt &quot;맑은 고딕&quot;;
+	border: 1px solid  #dddddd;
+    border-radius: 10px;
+	background-color: rgb(52,49,89);
+}
+QPushButton:pressed{
+	color: rgb(204, 18, 89);
+	font: 75 9pt &quot;맑은 고딕&quot;;
+	border: 2px solid  #dddddd;
+    border-radius: 10px;
+	background-color: rgb(52,49,89);
+}
+</string>
+            </property>
+            <property name="text">
+             <string>Initial Setting</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="Line_ini_0">
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {
+    border: 2px solid rgb(52,49,89);
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(52,49,89);
+	color: rgb(255, 255, 255);
+    selection-background-color: darkgray;
+}</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="Content_menu_empty_2">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="Mal_setting">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+	font: 75 9pt &quot;맑은 고딕&quot;;
+    border-radius: 10px;
+	background-color: rgb(52,49,89);
+}
+QPushButton:hover {
+	color: rgb(255, 255, 255);
+	font: 75 9pt &quot;맑은 고딕&quot;;
+	border: 1px solid  #dddddd;
+    border-radius: 10px;
+	background-color: rgb(52,49,89);
+}
+QPushButton:pressed{
+	color: rgb(204, 18, 89);
+	font: 75 9pt &quot;맑은 고딕&quot;;
+	border: 2px solid  #dddddd;
+    border-radius: 10px;
+	background-color: rgb(52,49,89);
+}
+</string>
+            </property>
+            <property name="text">
+             <string>Malfunction
+Setting</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="Label_mal_0_case">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);
+font: 75 9pt &quot;맑은 고딕&quot;;</string>
+            </property>
+            <property name="text">
+             <string>Mal_case</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="Line_mal_0_case">
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {
+    border: 2px solid rgb(52,49,89);
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(52,49,89);
+	color: rgb(255, 255, 255);
+    selection-background-color: darkgray;
+}</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="Label_mal_1_nub">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);
+font: 75 9pt &quot;맑은 고딕&quot;;</string>
+            </property>
+            <property name="text">
+             <string>Mal_number</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="Line_mal_1_nub">
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {
+    border: 2px solid rgb(52,49,89);
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(52,49,89);
+	color: rgb(255, 255, 255);
+    selection-background-color: darkgray;
+}</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="Label_mal_2_time">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);
+font: 75 9pt &quot;맑은 고딕&quot;;</string>
+            </property>
+            <property name="text">
+             <string>Mal_time</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="Line_mal_2_time">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {
+    border: 2px solid rgb(52,49,89);
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(52,49,89);
+	color: rgb(255, 255, 255);
+    selection-background-color: darkgray;
+}</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="Sys">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout">
+             <item>
+              <widget class="QRadioButton" name="SysRCS">
+               <property name="text">
+                <string>RCS</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="SysCVCS">
+               <property name="text">
+                <string>CVCS</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="SysRHR">
+               <property name="text">
+                <string>RHR</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="SysMSTB">
+               <property name="text">
+                <string>MS/TB</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="SysFWS">
+               <property name="text">
+                <string>FWS</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="SysCOND">
+               <property name="text">
+                <string>COND</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="SysELEC">
+               <property name="text">
+                <string>ELEC</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="SysROD">
+               <property name="text">
+                <string>ROD</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="Right">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QGridLayout" name="gridLayout">
+          <property name="leftMargin">
+           <number>5</number>
+          </property>
+          <property name="topMargin">
+           <number>5</number>
+          </property>
+          <property name="rightMargin">
+           <number>5</number>
+          </property>
+          <property name="bottomMargin">
+           <number>5</number>
+          </property>
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <item row="0" column="0">
+           <widget class="QTableWidget" name="ShowTable">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
       </layout>
@@ -160,7 +588,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>938</width>
+     <width>763</width>
      <height>21</height>
     </rect>
    </property>

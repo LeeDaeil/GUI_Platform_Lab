@@ -31,6 +31,7 @@ class Mainwindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        # Mem
         if mem == None: # TEST Stay
             pass
         else:
