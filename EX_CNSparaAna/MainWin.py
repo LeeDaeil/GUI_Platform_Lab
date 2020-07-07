@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'MainWinIleLuL.ui'
+## Form generated from reading UI file 'MainWinkjgFlS.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.0
 ##
@@ -20,7 +20,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(396, 630)
+        MainWindow.resize(400, 777)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout_3 = QVBoxLayout(self.centralwidget)
@@ -136,6 +136,11 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addWidget(self.Ran_3)
 
+        self.Ran_4 = QRadioButton(self.Type_bu)
+        self.Ran_4.setObjectName(u"Ran_4")
+
+        self.verticalLayout_2.addWidget(self.Ran_4)
+
         self.Mode_0 = QLabel(self.Type_bu)
         self.Mode_0.setObjectName(u"Mode_0")
 
@@ -185,7 +190,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.label = QLabel(self.frame_3)
         self.label.setObjectName(u"label")
-        self.label.setMinimumSize(QSize(120, 0))
+        self.label.setMinimumSize(QSize(150, 0))
         self.label.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout.addWidget(self.label)
@@ -203,9 +208,7 @@ class Ui_MainWindow(object):
         self.frame_2.setFrameShape(QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QFrame.Raised)
         self.verticalLayout_4 = QVBoxLayout(self.frame_2)
-        self.verticalLayout_4.setSpacing(0)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.label_5 = QLabel(self.frame_2)
         self.label_5.setObjectName(u"label_5")
         self.label_5.setMinimumSize(QSize(120, 0))
@@ -219,6 +222,13 @@ class Ui_MainWindow(object):
         self.Des_out.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.verticalLayout_4.addWidget(self.Des_out)
+
+        self.Des_img = QLabel(self.frame_2)
+        self.Des_img.setObjectName(u"Des_img")
+        self.Des_img.setMinimumSize(QSize(120, 0))
+        self.Des_img.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+
+        self.verticalLayout_4.addWidget(self.Des_img)
 
 
         self.verticalLayout_5.addWidget(self.frame_2)
@@ -262,7 +272,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.setContentsMargins(0, 0, -1, 0)
         self.label_2 = QLabel(self.ID_1)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setMinimumSize(QSize(120, 0))
+        self.label_2.setMinimumSize(QSize(150, 0))
         self.label_2.setStyleSheet(u"color: rgb(9, 93, 0);")
         self.label_2.setAlignment(Qt.AlignCenter)
 
@@ -286,7 +296,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.setContentsMargins(0, 0, -1, 0)
         self.label_3 = QLabel(self.ID_2)
         self.label_3.setObjectName(u"label_3")
-        self.label_3.setMinimumSize(QSize(120, 0))
+        self.label_3.setMinimumSize(QSize(150, 0))
         self.label_3.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout_3.addWidget(self.label_3)
@@ -298,6 +308,40 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_3.addWidget(self.ID_2)
+
+        self.ID_3 = QFrame(self.centralwidget)
+        self.ID_3.setObjectName(u"ID_3")
+        self.ID_3.setFrameShape(QFrame.StyledPanel)
+        self.ID_3.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_6 = QVBoxLayout(self.ID_3)
+        self.verticalLayout_6.setSpacing(0)
+        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.frame_4 = QFrame(self.ID_3)
+        self.frame_4.setObjectName(u"frame_4")
+        self.frame_4.setFrameShape(QFrame.StyledPanel)
+        self.frame_4.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_6 = QHBoxLayout(self.frame_4)
+        self.horizontalLayout_6.setSpacing(0)
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.label_6 = QLabel(self.frame_4)
+        self.label_6.setObjectName(u"label_6")
+        self.label_6.setMinimumSize(QSize(150, 0))
+        self.label_6.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_6.addWidget(self.label_6)
+
+        self.ID_input_4 = QLineEdit(self.frame_4)
+        self.ID_input_4.setObjectName(u"ID_input_4")
+
+        self.horizontalLayout_6.addWidget(self.ID_input_4)
+
+
+        self.verticalLayout_6.addWidget(self.frame_4)
+
+
+        self.verticalLayout_3.addWidget(self.ID_3)
 
         self.Saveby = QPushButton(self.centralwidget)
         self.Saveby.setObjectName(u"Saveby")
@@ -312,7 +356,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 396, 21))
+        self.menubar.setGeometry(QRect(0, 0, 400, 21))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -364,8 +408,9 @@ class Ui_MainWindow(object):
         self.Onoff_5.setText(QCoreApplication.translate("MainWindow", u"On/Off \uae30\uae30 on/off", None))
         self.Ran_0.setText(QCoreApplication.translate("MainWindow", u"\uc870\uc808 \ubc84\ud2bc", None))
         self.Ran_1.setText(QCoreApplication.translate("MainWindow", u"\uc870\uc808 \ubc84\ud2bc (up/down) Setpoint \uc870\uc808 \ubc84\ud2bc", None))
-        self.Ran_2.setText(QCoreApplication.translate("MainWindow", u"\uc870\uc808 \ubc84\ud2bc (up/down) \ubc38\ube0c\uac1c\ub3c4 \uc870\uc808 \ubc84\ud2bc", None))
+        self.Ran_2.setText(QCoreApplication.translate("MainWindow", u"\uc870\uc808 \ubc84\ud2bc (up/down) \ubc38\ube0c \uac1c\ub3c4 \uc870\uc808 \ubc84\ud2bc", None))
         self.Ran_3.setText(QCoreApplication.translate("MainWindow", u"\uc870\uc808 \ubc84\ud2bc (up/down) \uc81c\uc5b4\ubd09 \uc870\uc808 \ubc84\ud2bc", None))
+        self.Ran_4.setText(QCoreApplication.translate("MainWindow", u"\uc870\uc808 \ubc84\ud2bc (up/down) \ud788\ud130 \uac1c\ub3c4 \uc870\uc808 \ubc84\ud2bc", None))
         self.Mode_0.setText(QCoreApplication.translate("MainWindow", u"Mode \ubc84\ud2bc", None))
         self.Mode_1.setText(QCoreApplication.translate("MainWindow", u"Mode \ubc84\ud2bc Auto/Man \uc120\ud0dd \ubc84\ud2bc", None))
         self.Mode_2.setText(QCoreApplication.translate("MainWindow", u"Mode \ubc84\ud2bc Make-up mode \uc120\ud0dd \ubc84\ud2bc", None))
@@ -374,11 +419,13 @@ class Ui_MainWindow(object):
         self.label.setText(QCoreApplication.translate("MainWindow", u"ID", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"Des", None))
         self.Des_out.setText(QCoreApplication.translate("MainWindow", u"Des info", None))
+        self.Des_img.setText(QCoreApplication.translate("MainWindow", u"Des img", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"One Control", None))
         self.ID_yes.setText(QCoreApplication.translate("MainWindow", u"Yes", None))
         self.ID_no.setText(QCoreApplication.translate("MainWindow", u"No", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"On/Man/Open ID", None))
-        self.label_3.setText(QCoreApplication.translate("MainWindow", u"Off/Auto/Close ID", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"On/Man/Open/Up ID", None))
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"Off/Auto/Close/Down ID", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"\ubaa9\uc801", None))
         self.Saveby.setText(QCoreApplication.translate("MainWindow", u"Save", None))
         self.End_bu.setText(QCoreApplication.translate("MainWindow", u"End", None))
     # retranslateUi
