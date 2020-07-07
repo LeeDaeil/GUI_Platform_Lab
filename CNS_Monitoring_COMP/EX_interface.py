@@ -63,6 +63,7 @@ class Mainwindow(QMainWindow):
             self.ui.Ini_setting.clicked.connect(lambda: self.setInitialCondition(self.CNS_udp, True))
             self.ui.Mal_setting.clicked.connect(lambda: self.setMalCondition(self.CNS_udp, True))
             # ==========================================================================================================
+            # Tool bar section
             self.infoInitialNub = 1
             self.infoMalCase = 0
             self.infoMalNub = 0
@@ -75,6 +76,10 @@ class Mainwindow(QMainWindow):
                                                  f'{self.infoMalTime:4}')
 
             updateTopBar()
+
+        # ==========================================================================================================
+        # Sys table section
+        self.MaxRow = 7
 
         # Connect button
         self.ui.SysRCS.clicked.connect(lambda: self.UpdateTable(self.ui.SysRCS, 0))
@@ -129,6 +134,10 @@ class Mainwindow(QMainWindow):
                 # >> ===================================================================================================
                 # Clean Txt box
                 self.ui.Line_ini_0.setText('')
+
+                for key in self.ANdb.keys():
+                    self.ANdb[key]['Trig'] = 0
+
             else:
                 # is not int
                 callWorngMSG()
@@ -197,11 +206,11 @@ class Mainwindow(QMainWindow):
     def UpdateTableValue(self, sys_nub):
         self.ui.ShowTable.clear()
 
-        self.ui.ShowTable.setRowCount(7)
-        if self.ANdbSysInfo[str(sys_nub)] % 7 == 0:
-            max_col = self.ANdbSysInfo[str(sys_nub)] // 7      # 10개//10 ->1... -> 1
+        self.ui.ShowTable.setRowCount(self.MaxRow)
+        if self.ANdbSysInfo[str(sys_nub)] % self.MaxRow == 0:
+            max_col = self.ANdbSysInfo[str(sys_nub)] // self.MaxRow      # 10개//10 ->1... -> 1
         else:
-            max_col = self.ANdbSysInfo[str(sys_nub)]//7 + 1    # 14개//10 ->1... -> 2
+            max_col = self.ANdbSysInfo[str(sys_nub)]//self.MaxRow + 1    # 14개//10 ->1... -> 2
         self.ui.ShowTable.setColumnCount(max_col * 4)           # 3열 * n개
 
         # self.ui.ShowTable.setRowCount(self.ANdbSysInfo[str(sys_nub)])
@@ -209,39 +218,40 @@ class Mainwindow(QMainWindow):
         current_row = 0
         current_col = 0
         for keyANdb in self.ANdb.keys():
-            if self.ANdb[keyANdb]['SYS'] == str(sys_nub):
-                # Update Value(t-1 = t_0), Value(t = t_1)
+            # All Para Check
+            t_0, t_1 = 0, 0
+            if len(self.mem['KCNTOMS']['D']) == 2:
+                t_0, t_1 = self.mem[keyANdb]['L'][0], self.mem[keyANdb]['D'][1]
+            else:
                 t_0, t_1 = 0, 0
+
+            if not t_0 == t_1:
+                self.ANdb[keyANdb]['Trig'] = 1
+
+            if self.ANdb[keyANdb]['SYS'] == str(sys_nub):
                 if len(self.mem['KCNTOMS']['D']) == 2:
-                    self.ui.ShowTable.setItem(current_row, 1 + current_col, QTableWidgetItem('{:4.2f}'.format(self.mem[keyANdb]['L'][0])))
-                    self.ui.ShowTable.setItem(current_row, 2 + current_col, QTableWidgetItem('{:4.2f}'.format(self.mem[keyANdb]['D'][1])))
-                    t_0, t_1 = self.mem[keyANdb]['L'][0], self.mem[keyANdb]['D'][1]
-                elif len(self.mem['KCNTOMS']['D']) == 0:
-                    self.ui.ShowTable.setItem(current_row, 1 + current_col, QTableWidgetItem(str(0)))
-                    self.ui.ShowTable.setItem(current_row, 2 + current_col, QTableWidgetItem(str(0)))
-                    t_0, t_1 = 0, 0
+                    self.ui.ShowTable.setItem(current_row, 1 + current_col, QTableWidgetItem('{:4.2f}'.format(t_0)))
+                    self.ui.ShowTable.setItem(current_row, 2 + current_col, QTableWidgetItem('{:4.2f}'.format(t_1)))
                 else:
-                    self.ui.ShowTable.setItem(current_row, 1 + current_col, QTableWidgetItem('{:4.2f}'.format(self.mem[keyANdb]['D'][0])))
-                    self.ui.ShowTable.setItem(current_row, 2 + current_col, QTableWidgetItem('{:4.2f}'.format(self.mem[keyANdb]['D'][0])))
-                    t_0, t_1 = self.mem[keyANdb]['D'][0], self.mem[keyANdb]['D'][0]
+                    self.ui.ShowTable.setItem(current_row, 1 + current_col, QTableWidgetItem(str(t_0)))
+                    self.ui.ShowTable.setItem(current_row, 2 + current_col, QTableWidgetItem(str(t_1)))
 
                 # Update PARANAVE, ICON(Same or Not same)
-                if len(self.mem['KCNTOMS']['D']) == 2:
-                    if t_0 == t_1:
-                        if self.ANdb[keyANdb]['Trig'] == 0:
-                            ICON_ = QTableWidgetItem(keyANdb)
-                            ICON_.setIcon(QIcon("interface/Same.png"))
-                        else:
-                            ICON_ = QTableWidgetItem(keyANdb)
-                            ICON_.setIcon(QIcon("interface/NotSame.png"))
+                # if len(self.mem['KCNTOMS']['D']) == 2:
+                if t_0 == t_1:
+                    if self.ANdb[keyANdb]['Trig'] == 0:
+                        ICON_ = QTableWidgetItem(keyANdb)
+                        ICON_.setIcon(QIcon("interface/Same.png"))
                     else:
-                        self.ANdb[keyANdb]['Trig'] = 1
                         ICON_ = QTableWidgetItem(keyANdb)
                         ICON_.setIcon(QIcon("interface/NotSame.png"))
-                    self.ui.ShowTable.setItem(current_row, 0 + current_col, ICON_)
+                else:
+                    ICON_ = QTableWidgetItem(keyANdb)
+                    ICON_.setIcon(QIcon("interface/NotSame.png"))
+                self.ui.ShowTable.setItem(current_row, 0 + current_col, ICON_)
 
                 current_row += 1
-                if current_row >= 7:
+                if current_row >= self.MaxRow:
                     current_row = 0
                     current_col += 4
 
@@ -256,7 +266,7 @@ class Mainwindow(QMainWindow):
             self.ui.ShowTable.setItem(current_row, current_col+3, temp_item)
 
             current_row += 1
-            if current_row >= 7:
+            if current_row >= self.MaxRow:
                 current_row = 0
                 current_col += 4
 
