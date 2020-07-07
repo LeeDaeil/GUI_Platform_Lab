@@ -38,6 +38,8 @@ class Mainwindow(QMainWindow):
 
         # Load ANdb
         self.ANdb = read_ANdb()
+        for key in self.ANdb.keys():
+            self.ANdb[key]['Trig'] = 0
 
         self.ANdbSysInfo = {'0': 0, '1': 0, '2': 0, '3': 0, '4': 0, '5': 0, '6': 0, '7': 0}
         for keyANdb in self.ANdb.keys():
@@ -209,25 +211,34 @@ class Mainwindow(QMainWindow):
         for keyANdb in self.ANdb.keys():
             if self.ANdb[keyANdb]['SYS'] == str(sys_nub):
                 # Update Value(t-1 = t_0), Value(t = t_1)
+                t_0, t_1 = 0, 0
                 if len(self.mem['KCNTOMS']['D']) == 2:
                     self.ui.ShowTable.setItem(current_row, 1 + current_col, QTableWidgetItem('{:4.2f}'.format(self.mem[keyANdb]['L'][0])))
                     self.ui.ShowTable.setItem(current_row, 2 + current_col, QTableWidgetItem('{:4.2f}'.format(self.mem[keyANdb]['D'][1])))
+                    t_0, t_1 = self.mem[keyANdb]['L'][0], self.mem[keyANdb]['D'][1]
                 elif len(self.mem['KCNTOMS']['D']) == 0:
                     self.ui.ShowTable.setItem(current_row, 1 + current_col, QTableWidgetItem(str(0)))
                     self.ui.ShowTable.setItem(current_row, 2 + current_col, QTableWidgetItem(str(0)))
+                    t_0, t_1 = 0, 0
                 else:
                     self.ui.ShowTable.setItem(current_row, 1 + current_col, QTableWidgetItem('{:4.2f}'.format(self.mem[keyANdb]['D'][0])))
                     self.ui.ShowTable.setItem(current_row, 2 + current_col, QTableWidgetItem('{:4.2f}'.format(self.mem[keyANdb]['D'][0])))
+                    t_0, t_1 = self.mem[keyANdb]['D'][0], self.mem[keyANdb]['D'][0]
 
                 # Update PARANAVE, ICON(Same or Not same)
-                if float(self.ui.ShowTable.item(current_row, 1 + current_col).text()) == \
-                        float(self.ui.ShowTable.item(current_row, 2 + current_col).text()):
-                    ICON_ = QTableWidgetItem(keyANdb)
-                    ICON_.setIcon(QIcon("interface/Same.png"))
-                else:
-                    ICON_ = QTableWidgetItem(keyANdb)
-                    ICON_.setIcon(QIcon("interface/NotSame.png"))
-                self.ui.ShowTable.setItem(current_row, 0 + current_col, ICON_)
+                if len(self.mem['KCNTOMS']['D']) == 2:
+                    if t_0 == t_1:
+                        if self.ANdb[keyANdb]['Trig'] == 0:
+                            ICON_ = QTableWidgetItem(keyANdb)
+                            ICON_.setIcon(QIcon("interface/Same.png"))
+                        else:
+                            ICON_ = QTableWidgetItem(keyANdb)
+                            ICON_.setIcon(QIcon("interface/NotSame.png"))
+                    else:
+                        self.ANdb[keyANdb]['Trig'] = 1
+                        ICON_ = QTableWidgetItem(keyANdb)
+                        ICON_.setIcon(QIcon("interface/NotSame.png"))
+                    self.ui.ShowTable.setItem(current_row, 0 + current_col, ICON_)
 
                 current_row += 1
                 if current_row >= 7:
