@@ -12,6 +12,7 @@ from PySide2.QtGui import *
 from EX_CNSparaAna.MainWin import Ui_MainWindow
 
 # IMPORT FUNCTION
+from COMMON.UiFunction import *
 
 
 class Mainwindow(QMainWindow):
@@ -28,20 +29,7 @@ class Mainwindow(QMainWindow):
 
         # Make DB
         self.db = self.make_db()
-        if os.path.isfile('Andb.txt'):
-            self.ANdb = {}
-            with open('Andb.txt', 'r') as f:
-                while True:
-                    temp = f.readline().split('\n')[0].split('\t')
-                    if temp[0] == '':
-                        break
-                    self.ANdb[temp[0]] = {
-                        'SYS': temp[1], 'TYPE': temp[2], 'ONECONT': temp[3], 'OnManOpen': temp[4],
-                        'OffAutoClose': temp[5], 'Purpose': temp[6]
-                    }
-
-        else:
-            self.ANdb = {}
+        self.ANdb = read_ANdb()
 
         # Save info
         self.ui.End_bu.clicked.connect(self.end_file_and_save)
