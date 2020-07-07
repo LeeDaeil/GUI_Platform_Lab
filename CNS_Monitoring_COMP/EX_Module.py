@@ -1,6 +1,5 @@
 import multiprocessing
 from time import sleep
-
 import pandas as pd
 import copy
 import numpy as np
@@ -86,6 +85,7 @@ class EX_module(multiprocessing.Process):
         self.CNS_udp._send_control_signal(self.para, self.val)
 
     def run(self):
+        print('RUN EX_MODULE')
         while True:
             if self.trig_mem['Loop'] and self.trig_mem['Run']:
                 # print('계산중....', end='\t')

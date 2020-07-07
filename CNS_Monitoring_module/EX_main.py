@@ -1,16 +1,11 @@
 from multiprocessing import Manager
-from CNS_Monitoring_module.EX_db import db_make
-from CNS_Monitoring_module.EX_interface import *
-from CNS_Monitoring_module.EX_RUN_Module import *
-from CNS_Monitoring_module.EX_RUN_Module_FAST import *
-from CNS_Monitoring_module.EX_Module import *
-import argparse
 
 FAST = True
 
 class body:
     def __init__(self):
         # 초기 입력 인자 전달 -------------------------------------------------------------------- #
+        import argparse
         parser = argparse.ArgumentParser(description='CNS 플랫폼_TE Ver')
         parser.add_argument('--comip', type=str, default='', required=False, help="현재 컴퓨터의 ip [default='']")
         parser.add_argument('--comport', type=int, default=7101, required=False, help="현재 컴퓨터의 port [default=7001]")
@@ -25,6 +20,10 @@ class body:
         print(self.args)
         self.shared_mem = generate_mem().make_mem_structure()
         # ---------------------------------------------------------------------------------------- #
+        from CNS_Monitoring_module.EX_interface import *
+        from CNS_Monitoring_module.EX_RUN_Module import *
+        from CNS_Monitoring_module.EX_RUN_Module_FAST import *
+        from CNS_Monitoring_module.EX_Module import *
         if FAST:
             pro_list = [RUN_FREEZE_FAST(self.shared_mem, IP=self.args.comip, Port=self.args.comport),  # [1]
                         interface_function(self.shared_mem),  # [2]
@@ -56,6 +55,7 @@ class generate_mem:
         return memory_dict
 
     def make_main_mem_structure(self, max_len_deque=10):
+        from CNS_Monitoring_module.EX_db import db_make
         memory_dict = db_make().make_db_structure(max_len_deque)
         print('Main 메모리 생성 완료')
         return memory_dict

@@ -23,6 +23,7 @@ class interface_function(multiprocessing.Process):
         self.mem = mem
 
     def run(self):
+        print('RUN EX_Interface')
         app = QApplication(sys.argv)
         w = Mainwindow(self.mem)
         sys.exit(app.exec_())
