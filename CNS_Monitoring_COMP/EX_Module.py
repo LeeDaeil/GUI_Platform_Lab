@@ -4,7 +4,7 @@ import pandas as pd
 import copy
 import numpy as np
 from CNS_Monitoring_module.EX_CNS_Send_UDP import CNS_Send_Signal
-from CNS_Monitoring_module.EX_NetworkTool import NetTool
+# from CNS_Monitoring_module.EX_NetworkTool import NetTool
 
 TEST_FOR_LOAD = False
 
