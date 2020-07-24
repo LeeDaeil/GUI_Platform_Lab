@@ -11,6 +11,7 @@ from PySide2.QtGui import *
 
 # GUI FILE
 from CNS_Monitoring_COMP.interface.MainWinCOMP import Ui_MainWindow
+from CNS_Monitoring_COMP.interface.SUBCOMP import Ui_Dialog
 
 # IMPORT FUNCTION
 from COMMON.UiFunction import *
@@ -32,7 +33,7 @@ class interface_function(multiprocessing.Process):
 class Mainwindow(QMainWindow):
     def __init__(self, mem):
         super().__init__()
-        self.setWindowFlags(Qt.WindowStaysOnTopHint)
+        # self.setWindowFlags(Qt.WindowStaysOnTopHint)
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
@@ -91,6 +92,8 @@ class Mainwindow(QMainWindow):
         self.ui.SysCOND.clicked.connect(lambda: self.UpdateTable(self.ui.SysCOND, 5))
         self.ui.SysELEC.clicked.connect(lambda: self.UpdateTable(self.ui.SysELEC, 6))
         self.ui.SysROD.clicked.connect(lambda: self.UpdateTable(self.ui.SysROD, 7))
+        # Click table cell
+        self.ui.ShowTable.itemClicked.connect(self.CallInfoCell)
 
         timer = QTimer(self)
         for _ in [self.UpdateTableREALTIEM]:
@@ -263,7 +266,9 @@ class Mainwindow(QMainWindow):
         for row in range(0, self.ANdbSysInfo[str(sys_nub)]):
             get_img = QPixmap(f'Img_fold/{self.ui.ShowTable.item(current_row, current_col).text()}.png')
             temp_item = QTableWidgetItem()
-            temp_item.setData(Qt.DecorationRole, get_img.scaled(80, 200, Qt.KeepAspectRatio))
+            # img 크기
+            # temp_item.setData(Qt.DecorationRole, get_img.scaled(80, 200, Qt.KeepAspectRatio))
+            temp_item.setData(Qt.DecorationRole, get_img.scaled(200, 200, Qt.KeepAspectRatio))
             self.ui.ShowTable.setItem(current_row, current_col+3, temp_item)
 
             current_row += 1
@@ -271,6 +276,28 @@ class Mainwindow(QMainWindow):
                 current_row = 0
                 current_col += 4
 
+    def CallInfoCell(self, e):
+        # e.text()
+        if e.text() in self.ANdb.keys():
+            self.pop = PopCompInfo(self.ANdb, e.text())
+
+
+
+class PopCompInfo(QDialog):
+    def __init__(self, ANdb, FindVal):
+        super().__init__()
+
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self)
+
+        self.ui.SYS.setText(ANdb[FindVal]['SYS'])
+        self.ui.TYPE.setText(ANdb[FindVal]['TYPE'])
+        self.ui.ONECONT.setText(ANdb[FindVal]['ONECONT'])
+        self.ui.OnManOpen.setText(ANdb[FindVal]['OnManOpen'])
+        self.ui.OffAutoClose.setText(ANdb[FindVal]['OffAutoClose'])
+        self.ui.OffAutoClose_2.setText(ANdb[FindVal]['Purpose'])
+
+        self.show()
 
 if __name__ == '__main__':
     # test for interface
