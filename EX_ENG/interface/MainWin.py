@@ -54,7 +54,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2 = QHBoxLayout(self.DB_Frame)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.DB_Tabel = QTableView(self.DB_Frame)
+        self.DB_Tabel = QTableWidget(self.DB_Frame)
         self.DB_Tabel.setObjectName(u"DB_Tabel")
 
         self.horizontalLayout_2.addWidget(self.DB_Tabel)
