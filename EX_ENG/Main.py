@@ -119,6 +119,8 @@ class MainWindow(QMainWindow):
                 self.ui.DB_Tabel.setItem(row_c, 4, QTableWidgetItem(str(E_prob)))
                 row_c += 1
         else:
+            # TODO
+            #  랜덤 픽 말고 확률적으로 선택하도록 만들어야함.
             # 값 선택
             want_select = nub
             self.nub_label = []
