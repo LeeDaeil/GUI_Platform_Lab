@@ -39,6 +39,7 @@ class MainWindow(QMainWindow):
         self.DISUpdate()
         self.SendCount = 0
         self.ShowAnsCount = 0
+        self.nub_label = []
         self.show()
 
     def DBCkeck(self):
@@ -194,9 +195,10 @@ class MainWindow(QMainWindow):
         self.ShowAnsCount = 1 if self.ShowAnsCount == 0 else 0
         # 선택된 Nub의 값 출력
         row_c = 0
-        for nub_label in self.nub_label:
-            self.UpdateOneCell(nub_label=nub_label, row_c=row_c, ansmode=self.ShowAnsCount + 1)
-            row_c += 1
+        if len(self.nub_label) != 0:
+            for nub_label in self.nub_label:
+                self.UpdateOneCell(nub_label=nub_label, row_c=row_c, ansmode=self.ShowAnsCount + 1)
+                row_c += 1
         pass
 
     def CallExit(self):
