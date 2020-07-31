@@ -64,7 +64,7 @@ class MainWindow(QMainWindow):
         self.ui.DB_Tabel.setItem(row_c, 0, QTableWidgetItem(str(get_db_line.name)))
         if ansmode == 0:
             type_prob = self.softmax([get_db_line['K_prob'], get_db_line['E_prob']])
-            type_nub = np.random.choice([0, 1], 1, list(type_prob))[0]
+            type_nub = np.random.choice([0, 1], 1, list(type_prob), replace=False)[0]
             if type_nub == 1:
                 self.ui.DB_Tabel.setItem(row_c, 1, QTableWidgetItem(str(get_db_line['K'])))
                 self.ui.DB_Tabel.setItem(row_c, 2, QTableWidgetItem(str(get_db_line['E'][0:2])))
@@ -130,7 +130,7 @@ class MainWindow(QMainWindow):
                 # 확률적 합
                 All_prob = np.array(self.DB["K_prob"] + self.DB["E_prob"])  # 확률을 더함.
                 All_prob = self.softmax(All_prob)    # 합이 1이 되도록 만듬.
-                All_prob = np.random.choice(np.arange(0, len(self.DB)), nub, list(All_prob))    # 랜덤 확률로 뽑음.
+                All_prob = np.random.choice(np.arange(0, len(self.DB)), nub, list(All_prob), replace=False)    # 랜덤 확률로 뽑음.
                 self.nub_label = list(All_prob)
 
             # 선택된 Nub의 값 출력
