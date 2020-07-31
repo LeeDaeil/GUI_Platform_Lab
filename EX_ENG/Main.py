@@ -7,7 +7,7 @@ import random
 
 # Qt lib
 from PySide2.QtWidgets import QApplication, QWidget, QMainWindow, QHeaderView, QTableWidgetItem, QMessageBox, QCheckBox, \
-    QGridLayout
+    QGridLayout, QMenu, QAction
 from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtPrintSupport import *
@@ -35,6 +35,19 @@ class MainWindow(QMainWindow):
         self.ui.CallSend.clicked.connect(self.CallSend)
         self.ui.CallShowAns.clicked.connect(self.CallShowAns)
         self.ui.CallExit.clicked.connect(self.CallExit)
+
+        # Menu
+        self.ui.DB_Frame.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.ui.DB_Frame.customContextMenuRequested.connect(self.ShowMenu)
+        # create context menu
+        self.popMenu = QMenu()
+        self.popMenu.addLine = QAction('줄추가', self)         # 커스텀
+        self.popMenu.removeLine = QAction('줄지우기', self)    # 커스텀
+        self.popMenu.addLine.triggered.connect(self.addLine)
+        self.popMenu.removeLine.triggered.connect(self.removeLine)
+        self.popMenu.addAction(self.popMenu.addLine)
+        self.popMenu.addAction(self.popMenu.removeLine)
+        self.popMenu.addSeparator()
 
         # DIS
         self.DISUpdate()
@@ -64,7 +77,7 @@ class MainWindow(QMainWindow):
         self.ui.DB_Tabel.setItem(row_c, 0, QTableWidgetItem(str(get_db_line.name)))
         if ansmode == 0:
             type_prob = self.softmax([get_db_line['K_prob'], get_db_line['E_prob']])
-            type_nub = np.random.choice([0, 1], 1, list(type_prob), replace=False)[0]
+            type_nub = np.random.choice([0, 1], 1, p=list(type_prob), replace=False)[0]
             if type_nub == 1:
                 self.ui.DB_Tabel.setItem(row_c, 1, QTableWidgetItem(str(get_db_line['K'])))
                 self.ui.DB_Tabel.setItem(row_c, 2, QTableWidgetItem(str(get_db_line['E'][0:2])))
@@ -130,7 +143,7 @@ class MainWindow(QMainWindow):
                 # 확률적 합
                 All_prob = np.array(self.DB["K_prob"] + self.DB["E_prob"])  # 확률을 더함.
                 All_prob = self.softmax(All_prob)    # 합이 1이 되도록 만듬.
-                All_prob = np.random.choice(np.arange(0, len(self.DB)), nub, list(All_prob), replace=False)    # 랜덤 확률로 뽑음.
+                All_prob = np.random.choice(np.arange(0, len(self.DB)), nub, p=list(All_prob), replace=False)    # 랜덤 확률로 뽑음.
                 self.nub_label = list(All_prob)
 
             # 선택된 Nub의 값 출력
@@ -204,6 +217,29 @@ class MainWindow(QMainWindow):
 
     def CallExit(self):
         self.close()
+
+    def ShowMenu(self, point):
+        if int(self.ui.lineEdit.text()) == -1:
+            # self.popMenu.removeAction()
+            self.popMenu.removeAction(self.popMenu.addLine)
+            self.popMenu.removeAction(self.popMenu.removeLine)
+            self.popMenu.addAction(self.popMenu.addLine)
+            if self.ui.DB_Tabel.selectedItems() == []: # No click
+                # self.popMenu.addAction(self.popMenu.removeLine)
+                pass
+            else:
+                self.popMenu.addAction(self.popMenu.removeLine)
+
+            self.popMenu.exec_(self.ui.DB_Frame.mapToGlobal(point))
+
+    def addLine(self):
+        self.DB.loc[len(self.DB)] = ["", "", 0.1, 0.1]
+        self.UpdateTable(nub=-1)
+
+    def removeLine(self):
+        get_row = self.ui.DB_Tabel.selectedItems()[0].row()
+        self.DB.drop(get_row, 0, inplace=True)
+        self.UpdateTable(nub=-1)
 
     def closeEvent(self, e):
         # 종료
