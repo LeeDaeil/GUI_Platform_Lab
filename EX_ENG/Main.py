@@ -2,6 +2,7 @@
 import sys
 import os
 import pandas as pd
+import numpy as np
 import random
 
 # Qt lib
@@ -62,7 +63,8 @@ class MainWindow(QMainWindow):
         get_db_line = self.DB.iloc[nub_label]
         self.ui.DB_Tabel.setItem(row_c, 0, QTableWidgetItem(str(get_db_line.name)))
         if ansmode == 0:
-            type_nub = random.randint(0, 2)  # 0 Ko, 1: eng
+            type_prob = self.softmax([get_db_line['K_prob'], get_db_line['E_prob']])
+            type_nub = np.random.choice([0, 1], 1, list(type_prob))[0]
             if type_nub == 1:
                 self.ui.DB_Tabel.setItem(row_c, 1, QTableWidgetItem(str(get_db_line['K'])))
                 self.ui.DB_Tabel.setItem(row_c, 2, QTableWidgetItem(str(get_db_line['E'][0:2])))
@@ -123,14 +125,13 @@ class MainWindow(QMainWindow):
             # TODO
             #  랜덤 픽 말고 확률적으로 선택하도록 만들어야함.
             # 값 선택
-            want_select = nub
             self.nub_label = []
-            rand_nub = random.randint(0, len(self.DB) - 1)
-            for i in range(nub):
-                while rand_nub in self.nub_label:
-                    rand_nub = random.randint(0, len(self.DB) - 1)
-                self.nub_label.append(rand_nub)
-            print(self.nub_label)
+            if True:
+                # 확률적 합
+                All_prob = np.array(self.DB["K_prob"] + self.DB["E_prob"])  # 확률을 더함.
+                All_prob = self.softmax(All_prob)    # 합이 1이 되도록 만듬.
+                All_prob = np.random.choice(np.arange(0, len(self.DB)), nub, list(All_prob))    # 랜덤 확률로 뽑음.
+                self.nub_label = list(All_prob)
 
             # 선택된 Nub의 값 출력
             row_c = 0
@@ -208,6 +209,9 @@ class MainWindow(QMainWindow):
         # 종료
         self.DB.to_csv('Db.csv', index=False)   # index false 해야 unnamed가 없어짐.
 
+    def softmax(self, x):
+        e_x = np.exp(x - np.max(x))
+        return np.round_(e_x / e_x.sum(), 2)
 
 class CheckBOX(QWidget):
     def __init__(self):
