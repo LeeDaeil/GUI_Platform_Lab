@@ -1,4 +1,8 @@
 from multiprocessing import Manager
+from CNS_Monitoring_module.EX_interface import *
+from CNS_Monitoring_module.EX_RUN_Module import *
+from CNS_Monitoring_module.EX_RUN_Module_FAST import *
+from CNS_Monitoring_module.EX_Module import *
 
 FAST = True
 
@@ -9,7 +13,7 @@ class body:
         parser = argparse.ArgumentParser(description='CNS 플랫폼_TE Ver')
         parser.add_argument('--comip', type=str, default='', required=False, help="현재 컴퓨터의 ip [default='']")
         parser.add_argument('--comport', type=int, default=7101, required=False, help="현재 컴퓨터의 port [default=7001]")
-        parser.add_argument('--cnsip', type=str, default='192.168.0.29', required=False, help="CNS 컴퓨터의 ip [default='']")
+        parser.add_argument('--cnsip', type=str, default='192.168.0.105', required=False, help="CNS 컴퓨터의 ip [default='']")
         parser.add_argument('--cnsport', type=int, default=7101, required=False, help="CNS 컴퓨터의 port [default=7001]")
         self.args = parser.parse_args()
         print('=' * 25 + '초기입력 파라메터' + '=' * 25)
@@ -20,10 +24,7 @@ class body:
         print(self.args)
         self.shared_mem = generate_mem().make_mem_structure()
         # ---------------------------------------------------------------------------------------- #
-        from CNS_Monitoring_module.EX_interface import *
-        from CNS_Monitoring_module.EX_RUN_Module import *
-        from CNS_Monitoring_module.EX_RUN_Module_FAST import *
-        from CNS_Monitoring_module.EX_Module import *
+
         if FAST:
             pro_list = [RUN_FREEZE_FAST(self.shared_mem, IP=self.args.comip, Port=self.args.comport),  # [1]
                         interface_function(self.shared_mem),  # [2]

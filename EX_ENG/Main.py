@@ -159,12 +159,19 @@ class MainWindow(QMainWindow):
         pass
 
     def CallPrintPage(self, printer):
-        painter = QPainter()
-        painter.setRenderHint(QPainter.Antialiasing)
-        painter.begin(printer)
-        screen = self.ui.DB_Tabel.grab()
-        painter.drawPixmap(10, 10, screen)
-        painter.end()
+        document = QTextDocument()
+        DIS = '<table border="1" cellspacing="0" width="100%" cellpadding="2"><tbody>' # border="1" class="dataframe" width="100%" cellpadding="2"
+        for row in range(self.ui.DB_Tabel.rowCount()):
+            DIS += '<tr>'
+            for col in range(0, 3):
+                if col == 1 or col == 2: # <font size="2">
+                    DIS += f'<td>{self.ui.DB_Tabel.item(row, col).text()}</td>'
+                else:
+                    DIS += f'<td width="10">{self.ui.DB_Tabel.item(row, col).text()}</td>'
+            DIS += '</tr>'
+        DIS += '</tbody></table>'
+        document.setHtml(DIS)
+        document.print_(printer)
         pass
 
     def CallMakeDB(self):
@@ -248,6 +255,7 @@ class MainWindow(QMainWindow):
     def softmax(self, x):
         e_x = np.exp(x - np.max(x))
         return np.round_(e_x / e_x.sum(), 2)
+
 
 class CheckBOX(QWidget):
     def __init__(self):
